@@ -1,0 +1,27 @@
+{
+  "name": "BBNetwork",
+  "version": "1.0.2",
+  "summary": "BBNetwork is the base network library",
+  "description": "BBNetwork 是基础网络库。",
+  "homepage": "https://github.com/Djw2017/BBNetwork",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dong JW": "1971728089@qq.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://github.com/Djw2017/BBNetwork.git"
+  },
+  "source_files": "Pod/*.{h,m}",
+  "requires_arc": true,
+  "dependencies": {
+    "AFNetworking": [
+      "~> 3.1.0"
+    ]
+  }
+}

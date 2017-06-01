@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3CCED01D4269B3F4873B425A /* libPods-BBAD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B87390678C50401CDD95AF3 /* libPods-BBAD.a */; };
+		495266F51ED9125E00FA7B48 /* ADBBNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */; };
+		49556C9F1ED44C3F006AB2A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556C9E1ED44C3F006AB2A6 /* main.m */; };
+		49556CA21ED44C3F006AB2A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CA11ED44C3F006AB2A6 /* AppDelegate.m */; };
+		49556CA51ED44C3F006AB2A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CA41ED44C3F006AB2A6 /* ViewController.m */; };
+		49556CA81ED44C3F006AB2A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49556CA61ED44C3F006AB2A6 /* Main.storyboard */; };
+		49556CAA1ED44C3F006AB2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49556CA91ED44C3F006AB2A6 /* Assets.xcassets */; };
+		49556CAD1ED44C3F006AB2A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49556CAB1ED44C3F006AB2A6 /* LaunchScreen.storyboard */; };
+		49556CBC1ED44CC1006AB2A6 /* ADDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CB61ED44CC1006AB2A6 /* ADDefine.m */; };
+		49556CBD1ED44CC1006AB2A6 /* ADManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CB81ED44CC1006AB2A6 /* ADManager.m */; };
+		49556CBE1ED44CC1006AB2A6 /* ADSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CBB1ED44CC1006AB2A6 /* ADSplashManager.m */; };
+		495FA2521ED6A76D00B01F52 /* ADNativeContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2511ED6A76D00B01F52 /* ADNativeContent.m */; };
+		495FA2551ED6A7A600B01F52 /* ADNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2541ED6A7A600B01F52 /* ADNativeManager.m */; };
+		495FA2581ED6AB6800B01F52 /* ADNativeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2571ED6AB6800B01F52 /* ADNativeConfig.m */; };
+		495FA2631ED6BEA900B01F52 /* ADGDTNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2621ED6BEA900B01F52 /* ADGDTNativeManager.m */; };
+		495FA2651ED6C0F900B01F52 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2641ED6C0F900B01F52 /* libz.tbd */; };
+		495FA26D1ED6D4B200B01F52 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA26C1ED6D4B200B01F52 /* libGDTMobSDK.a */; };
+		495FA2701ED6EC5F00B01F52 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA26F1ED6EC5F00B01F52 /* AdSupport.framework */; };
+		495FA2721ED6EC6B00B01F52 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2711ED6EC6B00B01F52 /* CoreLocation.framework */; };
+		495FA2741ED6EC7500B01F52 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2731ED6EC7500B01F52 /* QuartzCore.framework */; };
+		495FA2761ED6EC7C00B01F52 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2751ED6EC7C00B01F52 /* SystemConfiguration.framework */; };
+		495FA2781ED6EC8300B01F52 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */; };
+		495FA27A1ED6EC8B00B01F52 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2791ED6EC8B00B01F52 /* Security.framework */; };
+		495FA27C1ED6EC9000B01F52 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA27B1ED6EC9000B01F52 /* StoreKit.framework */; };
+		496C9FC61ED51CA800025237 /* ADSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496C9FC51ED51CA800025237 /* ADSplashView.m */; };
+		496C9FC91ED51E0C00025237 /* ADSplashContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 496C9FC81ED51E0C00025237 /* ADSplashContent.m */; };
+		49A673821ED814D400EFCD67 /* ADAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673811ED814D400EFCD67 /* ADAnalysis.m */; };
+		49A673851ED820FE00EFCD67 /* ADNetworkLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */; };
+		49A673881ED821E200EFCD67 /* ADConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673871ED821E200EFCD67 /* ADConfig.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A60BB866992B066B65B8A2A /* Pods-BBAD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBAD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BBAD/Pods-BBAD.debug.xcconfig"; sourceTree = "<group>"; };
+		495266F31ED9125E00FA7B48 /* ADBBNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBBNativeManager.h; sourceTree = "<group>"; };
+		495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBBNativeManager.m; sourceTree = "<group>"; };
+		49556C9A1ED44C3F006AB2A6 /* BBAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49556C9E1ED44C3F006AB2A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		49556CA01ED44C3F006AB2A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		49556CA11ED44C3F006AB2A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		49556CA31ED44C3F006AB2A6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		49556CA41ED44C3F006AB2A6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		49556CA71ED44C3F006AB2A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49556CA91ED44C3F006AB2A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49556CAC1ED44C3F006AB2A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		49556CAE1ED44C3F006AB2A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49556CB51ED44CC1006AB2A6 /* ADDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDefine.h; sourceTree = "<group>"; };
+		49556CB61ED44CC1006AB2A6 /* ADDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDefine.m; sourceTree = "<group>"; };
+		49556CB71ED44CC1006AB2A6 /* ADManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADManager.h; sourceTree = "<group>"; };
+		49556CB81ED44CC1006AB2A6 /* ADManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADManager.m; sourceTree = "<group>"; };
+		49556CB91ED44CC1006AB2A6 /* ADSplashDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashDelegate.h; sourceTree = "<group>"; };
+		49556CBA1ED44CC1006AB2A6 /* ADSplashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashManager.h; sourceTree = "<group>"; };
+		49556CBB1ED44CC1006AB2A6 /* ADSplashManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashManager.m; sourceTree = "<group>"; };
+		495FA2501ED6A76D00B01F52 /* ADNativeContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeContent.h; sourceTree = "<group>"; };
+		495FA2511ED6A76D00B01F52 /* ADNativeContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNativeContent.m; sourceTree = "<group>"; };
+		495FA2531ED6A7A600B01F52 /* ADNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeManager.h; sourceTree = "<group>"; };
+		495FA2541ED6A7A600B01F52 /* ADNativeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNativeManager.m; sourceTree = "<group>"; };
+		495FA2561ED6AB6800B01F52 /* ADNativeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeConfig.h; sourceTree = "<group>"; };
+		495FA2571ED6AB6800B01F52 /* ADNativeConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNativeConfig.m; sourceTree = "<group>"; };
+		495FA2611ED6BEA900B01F52 /* ADGDTNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGDTNativeManager.h; sourceTree = "<group>"; };
+		495FA2621ED6BEA900B01F52 /* ADGDTNativeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADGDTNativeManager.m; sourceTree = "<group>"; };
+		495FA2641ED6C0F900B01F52 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		495FA2671ED6D4B200B01F52 /* GDTMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobBannerView.h; sourceTree = "<group>"; };
+		495FA2681ED6D4B200B01F52 /* GDTMobInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobInterstitial.h; sourceTree = "<group>"; };
+		495FA2691ED6D4B200B01F52 /* GDTNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeAd.h; sourceTree = "<group>"; };
+		495FA26A1ED6D4B200B01F52 /* GDTSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAd.h; sourceTree = "<group>"; };
+		495FA26B1ED6D4B200B01F52 /* GDTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTTrack.h; sourceTree = "<group>"; };
+		495FA26C1ED6D4B200B01F52 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
+		495FA26E1ED6D6FE00B01F52 /* ADNativeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeDelegate.h; sourceTree = "<group>"; };
+		495FA26F1ED6EC5F00B01F52 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		495FA2711ED6EC6B00B01F52 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		495FA2731ED6EC7500B01F52 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		495FA2751ED6EC7C00B01F52 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		495FA2791ED6EC8B00B01F52 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		495FA27B1ED6EC9000B01F52 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		496C9FC41ED51CA800025237 /* ADSplashView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashView.h; sourceTree = "<group>"; };
+		496C9FC51ED51CA800025237 /* ADSplashView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashView.m; sourceTree = "<group>"; };
+		496C9FC71ED51E0C00025237 /* ADSplashContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashContent.h; sourceTree = "<group>"; };
+		496C9FC81ED51E0C00025237 /* ADSplashContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashContent.m; sourceTree = "<group>"; };
+		49A673801ED814D400EFCD67 /* ADAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAnalysis.h; sourceTree = "<group>"; };
+		49A673811ED814D400EFCD67 /* ADAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAnalysis.m; sourceTree = "<group>"; };
+		49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNetworkLoader.h; sourceTree = "<group>"; };
+		49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNetworkLoader.m; sourceTree = "<group>"; };
+		49A673861ED821E200EFCD67 /* ADConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADConfig.h; sourceTree = "<group>"; };
+		49A673871ED821E200EFCD67 /* ADConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADConfig.m; sourceTree = "<group>"; };
+		49A673891ED824DF00EFCD67 /* BBADMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBADMacro.h; sourceTree = "<group>"; };
+		9157DE5B6CB870E3E839AE2B /* Pods-BBAD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBAD.release.xcconfig"; path = "Pods/Target Support Files/Pods-BBAD/Pods-BBAD.release.xcconfig"; sourceTree = "<group>"; };
+		9B87390678C50401CDD95AF3 /* libPods-BBAD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BBAD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49556C971ED44C3F006AB2A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				495FA27C1ED6EC9000B01F52 /* StoreKit.framework in Frameworks */,
+				495FA27A1ED6EC8B00B01F52 /* Security.framework in Frameworks */,
+				495FA2781ED6EC8300B01F52 /* CoreTelephony.framework in Frameworks */,
+				495FA2761ED6EC7C00B01F52 /* SystemConfiguration.framework in Frameworks */,
+				495FA2741ED6EC7500B01F52 /* QuartzCore.framework in Frameworks */,
+				495FA2721ED6EC6B00B01F52 /* CoreLocation.framework in Frameworks */,
+				495FA2701ED6EC5F00B01F52 /* AdSupport.framework in Frameworks */,
+				495FA2651ED6C0F900B01F52 /* libz.tbd in Frameworks */,
+				3CCED01D4269B3F4873B425A /* libPods-BBAD.a in Frameworks */,
+				495FA26D1ED6D4B200B01F52 /* libGDTMobSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		495266F21ED9122B00FA7B48 /* Babybus */ = {
+			isa = PBXGroup;
+			children = (
+				495266F31ED9125E00FA7B48 /* ADBBNativeManager.h */,
+				495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */,
+			);
+			path = Babybus;
+			sourceTree = "<group>";
+		};
+		49556C911ED44C3F006AB2A6 = {
+			isa = PBXGroup;
+			children = (
+				49556C9C1ED44C3F006AB2A6 /* BBAD */,
+				49556C9B1ED44C3F006AB2A6 /* Products */,
+				E559F55D0400B0A86E23A992 /* Pods */,
+				5CADAFF76F95970563A4E162 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		49556C9B1ED44C3F006AB2A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49556C9A1ED44C3F006AB2A6 /* BBAD.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49556C9C1ED44C3F006AB2A6 /* BBAD */ = {
+			isa = PBXGroup;
+			children = (
+				49556CA01ED44C3F006AB2A6 /* AppDelegate.h */,
+				49556CA11ED44C3F006AB2A6 /* AppDelegate.m */,
+				49556CA31ED44C3F006AB2A6 /* ViewController.h */,
+				49556CA41ED44C3F006AB2A6 /* ViewController.m */,
+				495266F21ED9122B00FA7B48 /* Babybus */,
+				495FA2591ED6B03700B01F52 /* GDT */,
+				49556CB41ED44CC1006AB2A6 /* Main */,
+				49556CA61ED44C3F006AB2A6 /* Main.storyboard */,
+				49556CA91ED44C3F006AB2A6 /* Assets.xcassets */,
+				49556CAB1ED44C3F006AB2A6 /* LaunchScreen.storyboard */,
+				49556CAE1ED44C3F006AB2A6 /* Info.plist */,
+				49556C9D1ED44C3F006AB2A6 /* Supporting Files */,
+			);
+			path = BBAD;
+			sourceTree = "<group>";
+		};
+		49556C9D1ED44C3F006AB2A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49556C9E1ED44C3F006AB2A6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49556CB41ED44CC1006AB2A6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				49A673891ED824DF00EFCD67 /* BBADMacro.h */,
+				49556CB51ED44CC1006AB2A6 /* ADDefine.h */,
+				49556CB61ED44CC1006AB2A6 /* ADDefine.m */,
+				49A673861ED821E200EFCD67 /* ADConfig.h */,
+				49A673871ED821E200EFCD67 /* ADConfig.m */,
+				49A673801ED814D400EFCD67 /* ADAnalysis.h */,
+				49A673811ED814D400EFCD67 /* ADAnalysis.m */,
+				49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */,
+				49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */,
+				49556CB71ED44CC1006AB2A6 /* ADManager.h */,
+				49556CB81ED44CC1006AB2A6 /* ADManager.m */,
+				49556CB91ED44CC1006AB2A6 /* ADSplashDelegate.h */,
+				49556CBA1ED44CC1006AB2A6 /* ADSplashManager.h */,
+				49556CBB1ED44CC1006AB2A6 /* ADSplashManager.m */,
+				496C9FC41ED51CA800025237 /* ADSplashView.h */,
+				496C9FC51ED51CA800025237 /* ADSplashView.m */,
+				496C9FC71ED51E0C00025237 /* ADSplashContent.h */,
+				496C9FC81ED51E0C00025237 /* ADSplashContent.m */,
+				495FA2531ED6A7A600B01F52 /* ADNativeManager.h */,
+				495FA2541ED6A7A600B01F52 /* ADNativeManager.m */,
+				495FA26E1ED6D6FE00B01F52 /* ADNativeDelegate.h */,
+				495FA2561ED6AB6800B01F52 /* ADNativeConfig.h */,
+				495FA2571ED6AB6800B01F52 /* ADNativeConfig.m */,
+				495FA2501ED6A76D00B01F52 /* ADNativeContent.h */,
+				495FA2511ED6A76D00B01F52 /* ADNativeContent.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		495FA2591ED6B03700B01F52 /* GDT */ = {
+			isa = PBXGroup;
+			children = (
+				495FA2611ED6BEA900B01F52 /* ADGDTNativeManager.h */,
+				495FA2621ED6BEA900B01F52 /* ADGDTNativeManager.m */,
+				495FA2661ED6D4B200B01F52 /* Framework */,
+			);
+			path = GDT;
+			sourceTree = "<group>";
+		};
+		495FA2661ED6D4B200B01F52 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				495FA2671ED6D4B200B01F52 /* GDTMobBannerView.h */,
+				495FA2681ED6D4B200B01F52 /* GDTMobInterstitial.h */,
+				495FA2691ED6D4B200B01F52 /* GDTNativeAd.h */,
+				495FA26A1ED6D4B200B01F52 /* GDTSplashAd.h */,
+				495FA26B1ED6D4B200B01F52 /* GDTTrack.h */,
+				495FA26C1ED6D4B200B01F52 /* libGDTMobSDK.a */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		5CADAFF76F95970563A4E162 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				495FA27B1ED6EC9000B01F52 /* StoreKit.framework */,
+				495FA2791ED6EC8B00B01F52 /* Security.framework */,
+				495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */,
+				495FA2751ED6EC7C00B01F52 /* SystemConfiguration.framework */,
+				495FA2731ED6EC7500B01F52 /* QuartzCore.framework */,
+				495FA2711ED6EC6B00B01F52 /* CoreLocation.framework */,
+				495FA26F1ED6EC5F00B01F52 /* AdSupport.framework */,
+				495FA2641ED6C0F900B01F52 /* libz.tbd */,
+				9B87390678C50401CDD95AF3 /* libPods-BBAD.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E559F55D0400B0A86E23A992 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A60BB866992B066B65B8A2A /* Pods-BBAD.debug.xcconfig */,
+				9157DE5B6CB870E3E839AE2B /* Pods-BBAD.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49556C991ED44C3F006AB2A6 /* BBAD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49556CB11ED44C3F006AB2A6 /* Build configuration list for PBXNativeTarget "BBAD" */;
+			buildPhases = (
+				AC815B07A1A1B2AE62246278 /* [CP] Check Pods Manifest.lock */,
+				49556C961ED44C3F006AB2A6 /* Sources */,
+				49556C971ED44C3F006AB2A6 /* Frameworks */,
+				49556C981ED44C3F006AB2A6 /* Resources */,
+				818FFAEA20F74AAC9C789B02 /* [CP] Embed Pods Frameworks */,
+				7E117DE5ED5BC7D3673D72A0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BBAD;
+			productName = BBAD;
+			productReference = 49556C9A1ED44C3F006AB2A6 /* BBAD.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49556C921ED44C3F006AB2A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Babybus;
+				TargetAttributes = {
+					49556C991ED44C3F006AB2A6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AMSTN4PRF9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 49556C951ED44C3F006AB2A6 /* Build configuration list for PBXProject "BBAD" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49556C911ED44C3F006AB2A6;
+			productRefGroup = 49556C9B1ED44C3F006AB2A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49556C991ED44C3F006AB2A6 /* BBAD */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49556C981ED44C3F006AB2A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49556CAD1ED44C3F006AB2A6 /* LaunchScreen.storyboard in Resources */,
+				49556CAA1ED44C3F006AB2A6 /* Assets.xcassets in Resources */,
+				49556CA81ED44C3F006AB2A6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7E117DE5ED5BC7D3673D72A0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BBAD/Pods-BBAD-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		818FFAEA20F74AAC9C789B02 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BBAD/Pods-BBAD-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC815B07A1A1B2AE62246278 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49556C961ED44C3F006AB2A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49A673851ED820FE00EFCD67 /* ADNetworkLoader.m in Sources */,
+				495FA2581ED6AB6800B01F52 /* ADNativeConfig.m in Sources */,
+				495FA2521ED6A76D00B01F52 /* ADNativeContent.m in Sources */,
+				49556CA51ED44C3F006AB2A6 /* ViewController.m in Sources */,
+				49556CBC1ED44CC1006AB2A6 /* ADDefine.m in Sources */,
+				495FA2551ED6A7A600B01F52 /* ADNativeManager.m in Sources */,
+				495FA2631ED6BEA900B01F52 /* ADGDTNativeManager.m in Sources */,
+				49556CA21ED44C3F006AB2A6 /* AppDelegate.m in Sources */,
+				49556C9F1ED44C3F006AB2A6 /* main.m in Sources */,
+				495266F51ED9125E00FA7B48 /* ADBBNativeManager.m in Sources */,
+				49556CBD1ED44CC1006AB2A6 /* ADManager.m in Sources */,
+				49A673881ED821E200EFCD67 /* ADConfig.m in Sources */,
+				49A673821ED814D400EFCD67 /* ADAnalysis.m in Sources */,
+				496C9FC61ED51CA800025237 /* ADSplashView.m in Sources */,
+				49556CBE1ED44CC1006AB2A6 /* ADSplashManager.m in Sources */,
+				496C9FC91ED51E0C00025237 /* ADSplashContent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		49556CA61ED44C3F006AB2A6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49556CA71ED44C3F006AB2A6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		49556CAB1ED44C3F006AB2A6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49556CAC1ED44C3F006AB2A6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49556CAF1ED44C3F006AB2A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49556CB01ED44C3F006AB2A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49556CB21ED44C3F006AB2A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A60BB866992B066B65B8A2A /* Pods-BBAD.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AMSTN4PRF9;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ADPLATFORMGDT=1",
+				);
+				INFOPLIST_FILE = BBAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BBAD/GDT",
+					"$(PROJECT_DIR)/BBAD/GDT/Framework",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sinyee.babybus.BBAD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		49556CB31ED44C3F006AB2A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9157DE5B6CB870E3E839AE2B /* Pods-BBAD.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AMSTN4PRF9;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ADPLATFORMGDT=1",
+				);
+				INFOPLIST_FILE = BBAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BBAD/GDT",
+					"$(PROJECT_DIR)/BBAD/GDT/Framework",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sinyee.babybus.BBAD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49556C951ED44C3F006AB2A6 /* Build configuration list for PBXProject "BBAD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49556CAF1ED44C3F006AB2A6 /* Debug */,
+				49556CB01ED44C3F006AB2A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49556CB11ED44C3F006AB2A6 /* Build configuration list for PBXNativeTarget "BBAD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49556CB21ED44C3F006AB2A6 /* Debug */,
+				49556CB31ED44C3F006AB2A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49556C921ED44C3F006AB2A6 /* Project object */;
+}

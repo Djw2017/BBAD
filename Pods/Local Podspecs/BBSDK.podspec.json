@@ -1,0 +1,71 @@
+{
+  "name": "BBSDK",
+  "version": "1.0.9",
+  "summary": "BBSDK is the foundation of all BabyBus SDKs",
+  "description": "BBSDK 是一个基础SDK，提供一些基本方法、宏等等，所有SDK都可能用到此SDK，其本身不实现任何具体功能。",
+  "homepage": "https://github.com/Djw2017/BBSDK",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dong JW": "1971728089@qq.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://github.com/Djw2017/BBSDK.git"
+  },
+  "frameworks": [
+    "UIKit",
+    "ImageIO"
+  ],
+  "requires_arc": true,
+  "subspecs": [
+    {
+      "name": "Utility",
+      "source_files": "BBSDK/Utility/*",
+      "public_header_files": "BBSDK/Utility/*.h",
+      "dependencies": {
+        "BBSDK/Categories/Foundation": [
+
+        ]
+      }
+    },
+    {
+      "name": "Macros",
+      "source_files": "BBSDK/Macros/*",
+      "public_header_files": "BBSDK/Macros/*.h",
+      "dependencies": {
+        "BBSDK/Utility": [
+
+        ]
+      }
+    },
+    {
+      "name": "Categories",
+      "source_files": "BBSDK/Categories/*.h",
+      "subspecs": [
+        {
+          "name": "Foundation",
+          "source_files": "BBSDK/Categories/Foundation/*",
+          "public_header_files": "BBSDK/Categories/Foundation/*.h"
+        },
+        {
+          "name": "UIKit",
+          "source_files": "BBSDK/Categories/UIKit/*",
+          "public_header_files": "BBSDK/Categories/UIKit/*.h",
+          "dependencies": {
+            "BBSDK/Categories/Foundation": [
+
+            ],
+            "BBSDK/Utility": [
+
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

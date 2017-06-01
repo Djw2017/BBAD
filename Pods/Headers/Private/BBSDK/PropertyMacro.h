@@ -1,0 +1,1 @@
+../../../BBSDK/BBSDK/Macros/PropertyMacro.h
