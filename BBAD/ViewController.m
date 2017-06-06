@@ -19,13 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor yellowColor];
 
     ADNativeConfig *config = [[ADNativeConfig alloc] init];
     config.appkey = @"1106019494";
     config.placementId = @"6060024131687918";
-    config.count = 10;
-    
+    config.count = 5;
     config.defaultPlatform = ADPlatformGDT;
     config.page = ADPageTopicDetailVC;
 

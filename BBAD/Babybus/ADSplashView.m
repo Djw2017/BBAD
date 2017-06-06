@@ -15,7 +15,7 @@
 #import "ADSplashView.h"
 
 // 默认广告展示时间
-static int ShowTimeLimit = 2.0;
+static int ShowTimeLimit = 3;
 
 @interface ADSplashView(){
     
@@ -127,14 +127,14 @@ static int ShowTimeLimit = 2.0;
 
 
 #pragma mark - property set
-- (void)setSplashViewDelegate:(id<ADSplashViewDelegate> )splashViewDelegate {
+- (void)setSplashVdelegate:(id<ADSplashViewDelegate> )delegate {
     
-    if (_splashViewDelegate != splashViewDelegate) {
+    if (_splashVdelegate != delegate) {
         
-        _splashViewDelegate = splashViewDelegate;
-        _delegateFlags.delegateDidDisplayed = [_splashViewDelegate respondsToSelector:@selector(splashAdViewDidDisplayed:)];
-        _delegateFlags.delegateDidUserClicked = [_splashViewDelegate respondsToSelector:@selector(splashAdViewDidUserClicked:)];
-        _delegateFlags.delegateDidDisplayCompleted = [_splashViewDelegate respondsToSelector:@selector(splashAdViewDidDisplayCompleted:)];
+        _splashVdelegate = delegate;
+        _delegateFlags.delegateDidDisplayed = [_splashVdelegate respondsToSelector:@selector(splashAdViewDidDisplayed:)];
+        _delegateFlags.delegateDidUserClicked = [_splashVdelegate respondsToSelector:@selector(splashAdViewDidUserClicked:)];
+        _delegateFlags.delegateDidDisplayCompleted = [_splashVdelegate respondsToSelector:@selector(splashAdViewDidDisplayCompleted:)];
     }
 }
 
@@ -152,7 +152,7 @@ static int ShowTimeLimit = 2.0;
 - (void)showToRoot {
     
     self.windowLevel = UIWindowLevelAlert;
-    UIViewController* splashVC = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    UIViewController* splashVC = [[UIViewController alloc] init];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapSplashView)];
     [splashVC.view addGestureRecognizer:tapGesture];
     self.rootViewController = splashVC;
@@ -199,7 +199,7 @@ static int ShowTimeLimit = 2.0;
     [_adImageView sd_setImageWithURL:[NSURL URLWithString:portrait] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         if (!error) {
             if (_delegateFlags.delegateDidDisplayed) {
-                [_splashViewDelegate splashAdViewDidDisplayed:self];
+                [_splashVdelegate splashAdViewDidDisplayed:self];
             }
         }
     }];
@@ -221,11 +221,11 @@ static int ShowTimeLimit = 2.0;
 -(void)tapSplashView {
      
     if (_delegateFlags.delegateDidUserClicked) {
-        [_splashViewDelegate splashAdViewDidUserClicked:self];
+        [_splashVdelegate splashAdViewDidUserClicked:self];
     }
 
-    [self removeFromSuperview];
-    [self dismiss];
+//    [self removeFromSuperview];
+//    [self dismiss];
 }
 
 -(void)dismiss{
@@ -238,13 +238,11 @@ static int ShowTimeLimit = 2.0;
     } completion:^(BOOL finished) {
         
         if (_delegateFlags.delegateDidDisplayCompleted) {
-            [_splashViewDelegate splashAdViewDidDisplayCompleted:self];
+            [_splashVdelegate splashAdViewDidDisplayCompleted:self];
         }
         [self resignKeyWindow];
     }];
 }
-
-
 
 - (void)dealloc{
     _adImageView = nil;

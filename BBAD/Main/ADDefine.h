@@ -14,18 +14,18 @@
 /**
  广告平台
  */
-typedef NS_ENUM(NSInteger, ADPlatform) {
+typedef NS_ENUM(int, ADPlatform) {
 
     /// 自家广告
-    ADPlatformBabybus		= 1,
-    /// 百度广告
-    ADPlatformBaidu         = 2,
-    /// 谷歌广告
-    ADPlatformAdmob         = 3,
+    ADPlatformBabybus		= 0,
     /// 广点通广告
-    ADPlatformGDT           = 4,
+    ADPlatformGDT           = 1,
     /// 讯飞广告
-    ADPlatformIFLY          = 5,
+    ADPlatformIFLY          = 2,
+    /// 今日头条广告
+    ADPlatformBaidu         = 3,
+    /// 谷歌广告
+    ADPlatformAdmob         = 4,
 };
 
 /**
@@ -60,24 +60,43 @@ typedef NS_ENUM(NSInteger, ADPage) {
 /**
  * ADAction
  *
- * 广告行为类型
+ * 自家广告行为类型
  *
- * 注：所有的广告行为类型都需参照该枚举。
+ * 注：所有的自家广告行为类型都需参照该枚举。
  *	  目前的使用到的所有行为类型都已经在此定义。
  */
 typedef NS_ENUM(NSInteger, ADAction) {
-    kADActionNone					= 0,			///< 没有任何操作.
-    kADActionOpensInStoreKit			= 1,			///< 使用StoreKit打开App下载页面，已实现
-    kADActionOpensInWebKit			= 2,			///< 使用公共的web视图打开链接地址，已实现
-    kADActionOpensOutApp				= 3,			///< 使用 UIApplication 打开链接，已实现
-    kADActionOpensInCustomWebPage	= 4,			///< 使用自定义的web视图打开链接地址，需要自行实现
-    kADActionOpensInAppDetail		= 5,			///< 打开应用详细页面，需要自行实现
-    kADActionOpensInAblum			= 6,			///< 打开软件专辑页面，需要自行实现
-    kADActionOpensInNote				= 7,			///< 打开帖子详细页，需要自行实现
-    kADActionOpensInActivity			= 8,			///< 打开活动页面，需要自行实现
-    kADActionOpensInWPAblum			= 9,			///< 打开壁纸专辑页面，需要自行实现
-    kADActionOpensInGift				= 10,			///< 打开礼包详细页面，需要自行实现
-    kADActionOpensInSTArticle		= 11			///< 打开攻略文章详细页，需要自行实现
+    
+    /// 没有任何操作.
+    KADActionNone                       = 0,
+    
+    ///使用StoreKit打开App下载页面，点击代理前已实现
+    KADActionOpensInStoreKit			= 1,
+
+    ///使用自定义的web视图打开链接地址，需要自行实现
+    kADKAdActionOpensInCustomWebPage	= 2,
+
+    /// 打开帖子详细页，需要自行实现
+    KADActionOpensInNote				= 3,
+};
+
+
+/**
+ 开屏错误原因
+ */
+typedef NS_ENUM(NSInteger, ADSplashError) {
+    
+    /// 响应数据显示开屏条件不符合
+    KADSplashErrorConditionNotMeet                   = -1,
+    
+    /// 响应数据显示平台本地不支持
+    KADSplashErrorPlatformNotSupported              = -2,
+    
+    /// 响应数据格式不正确
+    KADSplashErrorDataFormatError                   = -3,
+    
+    /// BBNetwork内部报错
+    KADSplashErrorBBNetworkError                        = -4,
 };
 
 @interface ADDefine : NSObject

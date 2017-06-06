@@ -6,25 +6,29 @@
 //  Copyright © 2017年 Babybus. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
+#import "ADConfig.h"
 #import "ADDefine.h"
 
-@interface ADNativeConfig : NSObject
+/**
+ 原生广告配置
+ */
+@interface ADNativeConfig : ADConfig
 
 ///	广告拉取数量
 @property (nonatomic, assign) int count;
 
-/// AppKey
-@property (nonatomic, copy) NSString *appkey;
+/// 广告所在列表位置
+@property (nonatomic, strong) NSArray *adPosition;
 
-/// 广告位id
-@property (nonatomic, copy) NSString *placementId;
-
-///	默认广告平台,服务端未请求到广告平台时使用
-@property (nonatomic, assign) ADPlatform defaultPlatform;
+/// 宝宝巴士原生广告信息
+@property (nonatomic, strong) NSArray *bbadInfoAry;
 
 ///	当前广告存在的页面控制器，此值优先于上值，platform
-@property (nonatomic, assign) ADPage page;
+//@property (nonatomic, assign) ADPage page;
+
+/// 需要展示的广告平台
+@property (nonatomic, strong) NSArray *adPlatformAry;
+
+- (instancetype)initWithDic:(NSDictionary *)dic;
 
 @end

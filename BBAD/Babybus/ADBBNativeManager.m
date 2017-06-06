@@ -48,7 +48,7 @@
         error = [[NSError alloc] initWithDomain:@"服务端获取的所有广告数据为空，不可使用自家广告" code:-1 userInfo:nil];
         [self nativeAdFailToLoad:error];
     }else {
-        for (ADConfig *config in [ADAnalysis sharedInstance].adConfigs) {
+        for (ADNativeConfig *config in [ADAnalysis sharedInstance].adConfigs) {
             // 匹配服务端响应页面与当前页面
             if (self.nativeConfig.page == config.page) {
                 if (!config.bbadInfoAry) {

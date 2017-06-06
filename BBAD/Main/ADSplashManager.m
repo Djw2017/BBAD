@@ -7,82 +7,74 @@
 //
 
 #import <BBNetwork/BBNetwork.h>
-#import <BBSDK/BBMacros.h>
+#import <BBSDK/NSUserDefaults+BBSDK.h>
 
+#import "ADBBSplashManager.h"
+#import "ADGDTSplashManager.h"
+#import "ADIFLYSplashManager.h"
+#import "ADNetworkLoader.h"
+
+#import "ADSplashConfig.h"
 #import "ADSplashManager.h"
 
-#import "ADSplashView.h"
+NSString *const KSplashKey = @"splash_ResponseDic";
 
-@interface ADSplashManager ()<ADSplashViewDelegate>
+@interface ADSplashManager ()
 {
-    @package
-    
-    struct {
-        /// 开屏广告请求成功，开屏广告即将展示
-        unsigned int delegateSplashRequestSuccess			: 1;
-        /// 开屏广告请求失败
-        unsigned int delegateSplashRequestFail				: 1;
-        /// 开屏广告已经展示
-        unsigned int delegateSplashDidPresentScreen         : 1;
-        /// 开屏广告展示结束
-        unsigned int delegateSplashDidDismissScreen         : 1;
-        /// 用户点击开屏广告
-        unsigned int delegateSplashDidUserClickedAd         : 1;
-        
-    }_delegateFlags;
-    
-    // 需要展示的广告图片地址
-    NSString *_splashImageUrlStr;
-    
-    // 整个广告视图
-    ADSplashView *_splashView;
+    ADSplashManager *_manager;
 }
-
 @end
+
+
+static ADSplashManager * _instance;
 
 @implementation ADSplashManager
 
-static ADSplashManager *_sharedInstance = nil;
-
-+ (ADSplashManager *)sharedInstance {
-
++ (instancetype)sharedInstance
+{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
-        _sharedInstance = [[self alloc] init];
+        _instance = [[self alloc] init];
         // 未显示开屏广告
-        _sharedInstance.splashing = NO;
-        // 开屏广告自动消失
-        _sharedInstance.autoDismiss = YES;
-        // 开屏广告默认展示时间
-        _sharedInstance.showInterval = 3;
+        _instance.splashing = NO;
+
+//        _instance.testNetwork = NO;
+        
+        /// 拉取广告超时时间
+        _instance.fetchDelay = 3;
+        
+        _instance.splashBackgroundImage = [_instance splashBackgroundImage];
     });
-    return _sharedInstance;
+    return _instance;
 }
 
-
-
-
-#pragma mark - property set
-- (void)setDelegate:(id<ADKSplashAdDelegate>)delegate {
+#pragma mark - property
+- (void)setDelegate:(id<ADSplashDelegate>)delegate {
     
     if (_delegate != delegate) {
         _delegate = delegate;
         
         _delegateFlags.delegateSplashRequestSuccess		= [_delegate respondsToSelector:@selector(splashRequestSuccess:)];
-        _delegateFlags.delegateSplashRequestFail		= [_delegate respondsToSelector:@selector(splashRequestFail:withError:)];
+        _delegateFlags.delegateSplashShowFail           = [_delegate respondsToSelector:@selector(splashShowFail:withError:)];
         _delegateFlags.delegateSplashDidPresentScreen	= [_delegate respondsToSelector:@selector(splashDidPresentScreen:)];
         _delegateFlags.delegateSplashDidUserClickedAd	= [_delegate respondsToSelector:@selector(splashDidUserClickedAd:withContent:)];
         _delegateFlags.delegateSplashDidDismissScreen	= [_delegate respondsToSelector:@selector(splashDidDismissScreen:)];
     }
 }
 
-- (void)setSplashBackgroundImageStr:(NSString *)splashBackgroundImageStr {
-    if (!_splashView) {
-        _splashView = [[ADSplashView alloc] init];
-        _splashView.splashViewDelegate = self;
+- (UIImage *)splashBackgroundImage {
+        
+    CGFloat scale = [UIScreen mainScreen].scale;
+    NSString* imageName = [NSString stringWithFormat:@"%0.0fx%0.0f",SCREEN_FULL_HEIGHT*scale,SCREEN_FULL_WIDTH*scale];
+    
+    UIImage *ig = [UIImage imageNamed:imageName];
+    //6p 9.0.2系统 imageName = "2001x1125"
+    if (ig == nil) {
+        if (667 == SCREEN_FULL_HEIGHT) {
+            ig = [UIImage imageNamed:@"2208x1242"];
+        }
     }
-    _splashView.splashBackgroundImageStr = splashBackgroundImageStr;
+    return ig;
 }
 
 
@@ -103,124 +95,109 @@ static ADSplashManager *_sharedInstance = nil;
     if (splash) {
         
     }else {
-        if (!_splashView) {
-            _splashView = [[ADSplashView alloc] init];
-            _splashView.splashViewDelegate = self;
-        }
-        [_splashView showToRoot];
+
         [self startReqeustSplashAd];
     }
 }
-
-/**
- 强制停止开屏广告
- */
-- (void)stopSplash {
-    [_splashView removeForRoot];
-}
-
-
-
 
 #pragma mark - inward method
 /**
  开启开屏广告时，开始请求开屏广告数据
  */
 - (void)startReqeustSplashAd {
-    
-    [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:nil success:^(id  _Nonnull responseObject) {
-        
-        NSDictionary *responseDic = (NSDictionary *)responseObject;
-   
-        [responseDic[@"data"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            if ([obj isKindOfClass:[NSDictionary class]]) {
-                _currentSplashContent = [[ADSplashContent alloc] initWithDic:obj];
-            }else{
-                return ;
+
+    // 读取上次缓存数据，从未缓存则不会展示开屏
+    if ([NSUserDefaults retrieveObjectForKey:KSplashKey]) {
+        NSDictionary *dic = [NSUserDefaults retrieveObjectForKey:KSplashKey];
+        if ([dic[@"allow"] isEqualToString:@"YES"]) {
+            ADSplashConfig *config = [[ADSplashConfig alloc] initWithDic:dic];
+            [self initAllSplashPlatformWithConfig:config];
+        }
+    }
+    // 请求广告数据，下次展示
+    [ADNetworkLoader loadSplashAdConfigCompleted:^(ADSplashConfig *currentSplashConfig, NSError *error) {
+        if (error) {
+            if (error.code == -1) {
+                [NSUserDefaults saveObject:@{@"allow": @"NO"}
+                                    forKey:KSplashKey];
             }
-            
-            // 时间有效则展示
-            BOOL beginIsSmall = [_currentSplashContent.begin_date integerValue]<[responseDic[@"always_time"] integerValue];
-            BOOL endIsBig = [_currentSplashContent.end_date integerValue]>[responseDic[@"always_time"] integerValue];
-            
-            if (beginIsSmall && endIsBig){
-                
-                // 开屏广告位可以展示请求的广告
-                [self adImageViewIsShow];
-                
-                *stop = YES;
+            [self splashShowFail:self withError:error];
+        }else {
+            if (currentSplashConfig.platform == ADPlatformBabybus) {
+                [NSUserDefaults saveObject:@{@"allow": @"YES",
+                                             @"ad_channel": @"0",
+                                             @"ipad_image":currentSplashConfig.ipad_image,
+                                             @"phone_image": currentSplashConfig.phone_image,
+                                             @"delay_time": [NSString stringWithFormat:@"%d",currentSplashConfig.showInterval*1000]}
+                                    forKey:KSplashKey];
+            }else {
+                [NSUserDefaults saveObject:@{@"allow": @"YES",
+                                             @"ad_channel": [NSString stringWithFormat:@"%d",currentSplashConfig.platform],
+                                             @"delay_time": [NSString stringWithFormat:@"%d",currentSplashConfig.showInterval*1000]}
+                                    forKey:KSplashKey];
             }
-        }];
-        
-    } failure:^(NSError * _Nonnull error) {
-        if (_delegateFlags.delegateSplashRequestFail) {
-            [self.delegate splashRequestFail:self withError:error];
+
         }
     }];
 }
 
+
+
 /**
- 请求成功后，发送消息，splashView开始展示
+ 初始化广告平台
+ 
+ @param config 平台
  */
-- (void)adImageViewIsShow {
+- (void)initAllSplashPlatformWithConfig:(ADSplashConfig *)config {
     
-    if (_delegateFlags.delegateSplashRequestSuccess) {
-        [self.delegate splashRequestSuccess:self];
+    ADPlatform platform = config.platform;
+    if (platform == ADPlatformBabybus) {
+        _manager = [[ADBBSplashManager alloc] initWithConfig:config];
     }
     
-    if (_splashView.isExcuting) {
-        _splashImageUrlStr = IS_IPAD?_currentSplashContent.ipad_image:_currentSplashContent.phone_image;
-        NSRange range = [_splashImageUrlStr rangeOfString:@"http"];
-        NSUInteger location = range.location;
-        
-        
-        if ( location != NSNotFound) {
-            [_splashView displayWithPortraitADImage:_splashImageUrlStr landscapeADImage:nil interval:self.showInterval];
-        } else{
-            //        [_adImageView sd_setImageWithURL:URL_IMAGE_HTTP(_splashImageUrlStr)];
-        }
+#ifdef ADPLATFORMGDT
+    else if (platform == ADPlatformGDT) {
+        _manager = [[ADGDTSplashManager alloc] initWithConfig:config];
     }
-}
-
-
-
-
-#pragma mark -ADSplashViewDelegate
-
-/**
- 开屏广告视图展示成功
- 
- @param splashAdView 当前开屏广告视图
- */
-- (void)splashAdViewDidDisplayed:(ADSplashView *)splashAdView {
-    if (_delegateFlags.delegateSplashDidPresentScreen) {
-        [self.delegate splashDidPresentScreen:self];
+#endif
+    
+#ifdef ADPLATFORMIFLY
+    else if (platform == ADPlatformIFLY) {
+        _manager = [[ADIFLYSplashManager alloc] initWithConfig:config];
+    }
+#endif
+    
+    if (_manager) {
+        [_manager startRequest];
+    }else {
+        NSError *error = [NSError errorWithDomain:@"Ad type of the response was incorrect" code:KADSplashErrorPlatformNotSupported
+                                         userInfo:nil];
+        [self splashShowFail:self withError:error];
     }
 }
 
 /**
- 用户点击开屏广告视图
- 
- @param splashAdView 当前开屏广告视图
- */
-- (void)splashAdViewDidUserClicked:(ADSplashView *)splashAdView {    
-    if (_delegateFlags.delegateSplashDidUserClickedAd) {
-        [self.delegate splashDidUserClickedAd:self withContent:_currentSplashContent];
-    }
-}
+ 开屏展示失败
 
-/**
- 开屏广告视图执行结束
- 
- @param splashAdView 当前开屏广告视图
+ @param splashAd 当前控制器
+ @param err 失败原因
  */
-- (void)splashAdViewDidDisplayCompleted:(ADSplashView *)splashAdView {
+- (void)splashShowFail:(ADSplashManager *)splashAd withError:(NSError *)err {
     
     self.splashing = NO;
-    if (_delegateFlags.delegateSplashDidDismissScreen) {
-        [self.delegate splashDidDismissScreen:self];
+    if (_delegateFlags.delegateSplashShowFail) {
+        // 开屏展示失败代理
+        [self.delegate splashShowFail:self withError:err];
     }
 }
+
+
+#pragma mark - self Protocol
+- (instancetype)initWithConfig:(ADSplashConfig *)splashConfig {
+    self = [super init];
+    return self;
+}
+
+- (void)startRequest {}
 
 @end

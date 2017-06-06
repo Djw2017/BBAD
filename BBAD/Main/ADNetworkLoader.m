@@ -9,7 +9,11 @@
 #import <BBNetwork/BBNetwork.h>
 #import "BBADMacro.h"
 
+#import "ADDefine.h"
+#import "ADNativeConfig.h"
 #import "ADNetworkLoader.h"
+
+#import "ADSplashManager.h"
 
 @interface ADNetworkLoader ()
 
@@ -42,8 +46,22 @@
                              };
         NSArray *ary = [[NSArray alloc] init];
         for (NSDictionary *dic in ddd[@"data"]) {
-            ADConfig *config = [[ADConfig alloc] initWithDic:dic];
-            ary = [ary arrayByAddingObject:config];
+            switch ([dic[@"type"] intValue]) {
+                case ADTypeNative:
+                {
+                    ADNativeConfig *config = [[ADNativeConfig alloc] initWithDic:dic];
+                    ary = [ary arrayByAddingObject:config];
+                }
+                    break;
+                case ADTypeSplash:
+                {
+                    
+                }
+                    break;
+                default:
+                    break;
+            }
+
         }
         
         completedBlock(ary,nil);
@@ -51,6 +69,59 @@
     } failure:^(NSError * _Nonnull error) {
         completedBlock(nil,error);
     }];
+}
+
+/**
+ 请求开屏数据
+ 
+ @param completedBlock 开屏广告数据
+ */
++ (void)loadSplashAdConfigCompleted:(ADNetworkLoaderSplashBlock)completedBlock {
+    
+    NSDictionary *dic = @{@"pos": PosParameterSplash,
+                          @"ost": @"1",
+                          @"al": @"350"};
+    
+    [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:dic withTimeoutInterval:[ADSplashManager sharedInstance].fetchDelay/2 success:^(id  _Nonnull responseObject) {
+        
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        
+        [responseDic[@"data"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ADSplashConfig *currentSplashConfig;
+            if ([obj isKindOfClass:[NSDictionary class]]) {
+                currentSplashConfig = [[ADSplashConfig alloc] initWithDic:obj];
+            }else{
+                NSError *error = [NSError errorWithDomain:@"Response is not NSDictionary"
+                                                     code:KADSplashErrorDataFormatError
+                                                 userInfo:nil];
+                completedBlock(nil,error);
+                return ;
+            }
+            
+            // 时间有效则展示
+            BOOL beginIsSmall = [currentSplashConfig.begin_date integerValue]<[responseDic[@"always_time"] integerValue];
+            BOOL endIsBig = [currentSplashConfig.end_date integerValue]>[responseDic[@"always_time"] integerValue];
+            
+            if (beginIsSmall && endIsBig){
+                
+                completedBlock(currentSplashConfig,nil);
+            }else {
+                NSError *error = [NSError errorWithDomain:@"(begin_date>always_time)||(end_date<always_time) is not allowed"
+                                                     code:KADSplashErrorConditionNotMeet
+                                                 userInfo:nil];
+                completedBlock(nil,error);
+            }
+        }];
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSError *selfError = [NSError errorWithDomain:error.domain
+                                             code:KADSplashErrorBBNetworkError
+                                         userInfo:nil];
+        
+        completedBlock(nil,selfError);
+    }];
+
 }
 
 - (void)cancel {

@@ -9,13 +9,13 @@
 #ifndef ADSplashDelegate_h
 #define ADSplashDelegate_h
 
-@class ADSplashContent;
+@class ADSplashConfig;
 @class ADSplashManager;
 
 /**
  * 开屏广告代理
  */
-@protocol ADKSplashAdDelegate <NSObject>
+@protocol ADSplashDelegate <NSObject>
 
 @optional
 
@@ -24,8 +24,8 @@
 /// 开屏广告请求成功，开屏广告即将展示
 - (void)splashRequestSuccess:(ADSplashManager *)splashAd;
 
-/// 开屏广告请求失败
-- (void)splashRequestFail:(ADSplashManager *)splashAd withError:(NSError *)err;
+/// 开屏广告展示失败
+- (void)splashShowFail:(ADSplashManager *)splashAd withError:(NSError *)err;
 
 #pragma mark Display-Time Lifecycle Notifications
 
@@ -36,7 +36,7 @@
 - (void)splashDidDismissScreen:(ADSplashManager *)splashAd;
 
 /// 用户点击开屏广告
-- (void)splashDidUserClickedAd:(ADSplashManager *)splashAd withContent:(ADSplashContent *)splashContent;
+- (void)splashDidUserClickedAd:(ADSplashManager *)splashAd withContent:(ADSplashConfig *)splashContent;
 
 #endif /* ADSplashDelegate_h */
 
