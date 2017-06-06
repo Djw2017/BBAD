@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Babybus. All rights reserved.
 //
 
+#import <BBSDK/BBUIUtility.h>
+
 #import "ADNativeConfig.h"
 #import "ADNativeContent.h"
 #import "ADNativeDelegate.h"
@@ -16,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ADNativeProtocol <NSObject>
 
+/**
+ 根据配置分发初始化各平台
+ 
+ @param nativeConfig 初始化配置
+ @return 继承ADNativeManager的平台管理者
+ */
 - (instancetype)initWithConfig:(ADNativeConfig *)nativeConfig;
 
 /**

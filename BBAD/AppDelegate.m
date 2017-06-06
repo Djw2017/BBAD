@@ -7,24 +7,18 @@
 //
 
 #import "AppDelegate.h"
-#import "ADSplashManager.h"
-
 #import "ADAnalysis.h"
 
-@interface AppDelegate () <ADKSplashAdDelegate>
-
-@end
-
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[ADAnalysis sharedInstance] startAnalysis];
+    [self creatRootViewController];
+//    [[ADAnalysis sharedInstance] startAnalysis];
     
-//    [[ADSplashManager sharedInstance] startSplashWith:nil];
-//    [ADSplashManager sharedInstance].delegate = self;
+    [[ADSplashManager sharedInstance] startSplashWith:nil];
+    [ADSplashManager sharedInstance].delegate = self;
     return YES;
 }
 
@@ -33,7 +27,7 @@
     NSLog(@"==================b050");
 //    广告曝光
 //    AdCountModel *model = [[AdCountModel alloc] init];
-//    model.ad_title = _currentSplashContent.title;
+//    model.ad_title = _currentSplashConfig.title;
 //    model.begin_date = @"";
 //    model.end_date = @"";
 //    model.ad_position = @"开屏广告";
@@ -53,17 +47,17 @@
 //    }
 }
 
-- (void)splashRequestFail:(ADSplashManager *)splashAd withError:(NSError *)err {
-    NSLog(@"- (void)splashRequestFail:(ADSplashManager *)splashAd withError:(NSError *)err");
+- (void)splashShowFail:(ADSplashManager *)splashAd withError:(NSError *)err {
+    NSLog(@"%s",__FUNCTION__);
 }
 
 /// 开屏广告已经展示
 - (void)splashDidPresentScreen:(ADSplashManager *)splashAd {
-    NSLog(@"- (void)splashDidPresentScreen:(ADSplashManager *)splashAd");
+    NSLog(@"%s",__FUNCTION__);
 }
 
 /// 用户点击开屏广告
-- (void)splashDidUserClickedAd:(ADSplashManager *)splashAd withContent:(ADSplashContent *)splashContent {
+- (void)splashDidUserClickedAd:(ADSplashManager *)splashAd withContent:(ADSplashConfig *)splashContent {
     NSLog(@"==================b12");
     
 //    NSString *url;
@@ -72,17 +66,12 @@
 //        [_rootTabbarController pushToWelfareVCFromSocialVC:url];
 //        return;
 //    }
-//    else if([splashContent.type intValue] == 1){//下载app
-//        url = splashContent.app_download;
-//    }
 //    else if([splashContent.type intValue] == 2){//打开web
 //        url = splashContent.url;
 //    }
 //    NSRange range=[url rangeOfString:@"itms-apps://"];
 //    NSRange range2=[url rangeOfString:@"https://itunes.apple.com/"];
-//    if (range.length != 0 || range2.length !=0) {
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-//    }else{
+//    if (range.length == 0 && range2.length ==0) {
 //        [_rootTabbarController openWebFormRecommendVC:url];
 //    }
     
@@ -104,5 +93,15 @@
 }
 
 
+- (void)creatRootViewController {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.viewController = [[ViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+    nav.navigationBar.barStyle = UIBarStyleDefault;
+    nav.navigationBar.topItem.title = @"广告";
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+}
 
 @end

@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		3CCED01D4269B3F4873B425A /* libPods-BBAD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B87390678C50401CDD95AF3 /* libPods-BBAD.a */; };
+		494F56AC1EE530D6003D02CD /* ADIFLYNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 494F56AB1EE530D6003D02CD /* ADIFLYNativeManager.m */; };
 		495266F51ED9125E00FA7B48 /* ADBBNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */; };
+		495462981EE03B5600F97BE5 /* ADSplashConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 495462971EE03B5600F97BE5 /* ADSplashConfig.m */; };
+		4954629B1EE03E5C00F97BE5 /* ADGDTSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4954629A1EE03E5C00F97BE5 /* ADGDTSplashManager.m */; };
+		4954629E1EE0491500F97BE5 /* ADBBSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4954629D1EE0491500F97BE5 /* ADBBSplashManager.m */; };
 		49556C9F1ED44C3F006AB2A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556C9E1ED44C3F006AB2A6 /* main.m */; };
 		49556CA21ED44C3F006AB2A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CA11ED44C3F006AB2A6 /* AppDelegate.m */; };
 		49556CA51ED44C3F006AB2A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CA41ED44C3F006AB2A6 /* ViewController.m */; };
-		49556CA81ED44C3F006AB2A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49556CA61ED44C3F006AB2A6 /* Main.storyboard */; };
 		49556CAA1ED44C3F006AB2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49556CA91ED44C3F006AB2A6 /* Assets.xcassets */; };
-		49556CAD1ED44C3F006AB2A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49556CAB1ED44C3F006AB2A6 /* LaunchScreen.storyboard */; };
 		49556CBC1ED44CC1006AB2A6 /* ADDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CB61ED44CC1006AB2A6 /* ADDefine.m */; };
-		49556CBD1ED44CC1006AB2A6 /* ADManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CB81ED44CC1006AB2A6 /* ADManager.m */; };
 		49556CBE1ED44CC1006AB2A6 /* ADSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CBB1ED44CC1006AB2A6 /* ADSplashManager.m */; };
+		495643701EE0F6940038FD75 /* ADIFLYSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956436F1EE0F6940038FD75 /* ADIFLYSplashManager.m */; };
+		4956437A1EE0F7360038FD75 /* libIFLYAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495643791EE0F7360038FD75 /* libIFLYAdLib.a */; };
+		4956437D1EE1058C0038FD75 /* ADSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956437C1EE1058C0038FD75 /* ADSplashView.m */; };
 		495FA2521ED6A76D00B01F52 /* ADNativeContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2511ED6A76D00B01F52 /* ADNativeContent.m */; };
 		495FA2551ED6A7A600B01F52 /* ADNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2541ED6A7A600B01F52 /* ADNativeManager.m */; };
 		495FA2581ED6AB6800B01F52 /* ADNativeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2571ED6AB6800B01F52 /* ADNativeConfig.m */; };
@@ -31,8 +35,6 @@
 		495FA2781ED6EC8300B01F52 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */; };
 		495FA27A1ED6EC8B00B01F52 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2791ED6EC8B00B01F52 /* Security.framework */; };
 		495FA27C1ED6EC9000B01F52 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA27B1ED6EC9000B01F52 /* StoreKit.framework */; };
-		496C9FC61ED51CA800025237 /* ADSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496C9FC51ED51CA800025237 /* ADSplashView.m */; };
-		496C9FC91ED51E0C00025237 /* ADSplashContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 496C9FC81ED51E0C00025237 /* ADSplashContent.m */; };
 		49A673821ED814D400EFCD67 /* ADAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673811ED814D400EFCD67 /* ADAnalysis.m */; };
 		49A673851ED820FE00EFCD67 /* ADNetworkLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */; };
 		49A673881ED821E200EFCD67 /* ADConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673871ED821E200EFCD67 /* ADConfig.m */; };
@@ -40,25 +42,41 @@
 
 /* Begin PBXFileReference section */
 		1A60BB866992B066B65B8A2A /* Pods-BBAD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBAD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BBAD/Pods-BBAD.debug.xcconfig"; sourceTree = "<group>"; };
+		494F56AA1EE530D6003D02CD /* ADIFLYNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADIFLYNativeManager.h; sourceTree = "<group>"; };
+		494F56AB1EE530D6003D02CD /* ADIFLYNativeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADIFLYNativeManager.m; sourceTree = "<group>"; };
 		495266F31ED9125E00FA7B48 /* ADBBNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBBNativeManager.h; sourceTree = "<group>"; };
 		495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBBNativeManager.m; sourceTree = "<group>"; };
+		495462961EE03B5600F97BE5 /* ADSplashConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashConfig.h; sourceTree = "<group>"; };
+		495462971EE03B5600F97BE5 /* ADSplashConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashConfig.m; sourceTree = "<group>"; };
+		495462991EE03E5C00F97BE5 /* ADGDTSplashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGDTSplashManager.h; sourceTree = "<group>"; };
+		4954629A1EE03E5C00F97BE5 /* ADGDTSplashManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADGDTSplashManager.m; sourceTree = "<group>"; };
+		4954629C1EE0491500F97BE5 /* ADBBSplashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBBSplashManager.h; sourceTree = "<group>"; };
+		4954629D1EE0491500F97BE5 /* ADBBSplashManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBBSplashManager.m; sourceTree = "<group>"; };
 		49556C9A1ED44C3F006AB2A6 /* BBAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49556C9E1ED44C3F006AB2A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		49556CA01ED44C3F006AB2A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		49556CA11ED44C3F006AB2A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		49556CA31ED44C3F006AB2A6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		49556CA41ED44C3F006AB2A6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		49556CA71ED44C3F006AB2A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49556CA91ED44C3F006AB2A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		49556CAC1ED44C3F006AB2A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49556CAE1ED44C3F006AB2A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49556CB51ED44CC1006AB2A6 /* ADDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDefine.h; sourceTree = "<group>"; };
 		49556CB61ED44CC1006AB2A6 /* ADDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDefine.m; sourceTree = "<group>"; };
-		49556CB71ED44CC1006AB2A6 /* ADManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADManager.h; sourceTree = "<group>"; };
-		49556CB81ED44CC1006AB2A6 /* ADManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADManager.m; sourceTree = "<group>"; };
 		49556CB91ED44CC1006AB2A6 /* ADSplashDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashDelegate.h; sourceTree = "<group>"; };
 		49556CBA1ED44CC1006AB2A6 /* ADSplashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashManager.h; sourceTree = "<group>"; };
 		49556CBB1ED44CC1006AB2A6 /* ADSplashManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashManager.m; sourceTree = "<group>"; };
+		4956436E1EE0F6940038FD75 /* ADIFLYSplashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADIFLYSplashManager.h; sourceTree = "<group>"; };
+		4956436F1EE0F6940038FD75 /* ADIFLYSplashManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADIFLYSplashManager.m; sourceTree = "<group>"; };
+		495643721EE0F7360038FD75 /* AdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdError.h; sourceTree = "<group>"; };
+		495643731EE0F7360038FD75 /* IFLYAdBootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYAdBootViewController.h; sourceTree = "<group>"; };
+		495643741EE0F7360038FD75 /* IFLYAdFullScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYAdFullScreenController.h; sourceTree = "<group>"; };
+		495643751EE0F7360038FD75 /* IFLYAdLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYAdLog.h; sourceTree = "<group>"; };
+		495643761EE0F7360038FD75 /* IFLYBannerAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYBannerAd.h; sourceTree = "<group>"; };
+		495643771EE0F7360038FD75 /* IFLYInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYInterstitialAd.h; sourceTree = "<group>"; };
+		495643781EE0F7360038FD75 /* IFLYNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYNativeAd.h; sourceTree = "<group>"; };
+		495643791EE0F7360038FD75 /* libIFLYAdLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIFLYAdLib.a; sourceTree = "<group>"; };
+		4956437B1EE1058C0038FD75 /* ADSplashView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashView.h; sourceTree = "<group>"; };
+		4956437C1EE1058C0038FD75 /* ADSplashView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashView.m; sourceTree = "<group>"; };
 		495FA2501ED6A76D00B01F52 /* ADNativeContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeContent.h; sourceTree = "<group>"; };
 		495FA2511ED6A76D00B01F52 /* ADNativeContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNativeContent.m; sourceTree = "<group>"; };
 		495FA2531ED6A7A600B01F52 /* ADNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeManager.h; sourceTree = "<group>"; };
@@ -82,10 +100,6 @@
 		495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		495FA2791ED6EC8B00B01F52 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		495FA27B1ED6EC9000B01F52 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		496C9FC41ED51CA800025237 /* ADSplashView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashView.h; sourceTree = "<group>"; };
-		496C9FC51ED51CA800025237 /* ADSplashView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashView.m; sourceTree = "<group>"; };
-		496C9FC71ED51E0C00025237 /* ADSplashContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashContent.h; sourceTree = "<group>"; };
-		496C9FC81ED51E0C00025237 /* ADSplashContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashContent.m; sourceTree = "<group>"; };
 		49A673801ED814D400EFCD67 /* ADAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAnalysis.h; sourceTree = "<group>"; };
 		49A673811ED814D400EFCD67 /* ADAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAnalysis.m; sourceTree = "<group>"; };
 		49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNetworkLoader.h; sourceTree = "<group>"; };
@@ -104,6 +118,7 @@
 			files = (
 				495FA27C1ED6EC9000B01F52 /* StoreKit.framework in Frameworks */,
 				495FA27A1ED6EC8B00B01F52 /* Security.framework in Frameworks */,
+				4956437A1EE0F7360038FD75 /* libIFLYAdLib.a in Frameworks */,
 				495FA2781ED6EC8300B01F52 /* CoreTelephony.framework in Frameworks */,
 				495FA2761ED6EC7C00B01F52 /* SystemConfiguration.framework in Frameworks */,
 				495FA2741ED6EC7500B01F52 /* QuartzCore.framework in Frameworks */,
@@ -123,6 +138,10 @@
 			children = (
 				495266F31ED9125E00FA7B48 /* ADBBNativeManager.h */,
 				495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */,
+				4954629C1EE0491500F97BE5 /* ADBBSplashManager.h */,
+				4954629D1EE0491500F97BE5 /* ADBBSplashManager.m */,
+				4956437B1EE1058C0038FD75 /* ADSplashView.h */,
+				4956437C1EE1058C0038FD75 /* ADSplashView.m */,
 			);
 			path = Babybus;
 			sourceTree = "<group>";
@@ -152,12 +171,11 @@
 				49556CA11ED44C3F006AB2A6 /* AppDelegate.m */,
 				49556CA31ED44C3F006AB2A6 /* ViewController.h */,
 				49556CA41ED44C3F006AB2A6 /* ViewController.m */,
+				4956436D1EE0F6800038FD75 /* IFLY */,
 				495266F21ED9122B00FA7B48 /* Babybus */,
 				495FA2591ED6B03700B01F52 /* GDT */,
 				49556CB41ED44CC1006AB2A6 /* Main */,
-				49556CA61ED44C3F006AB2A6 /* Main.storyboard */,
 				49556CA91ED44C3F006AB2A6 /* Assets.xcassets */,
-				49556CAB1ED44C3F006AB2A6 /* LaunchScreen.storyboard */,
 				49556CAE1ED44C3F006AB2A6 /* Info.plist */,
 				49556C9D1ED44C3F006AB2A6 /* Supporting Files */,
 			);
@@ -184,15 +202,11 @@
 				49A673811ED814D400EFCD67 /* ADAnalysis.m */,
 				49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */,
 				49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */,
-				49556CB71ED44CC1006AB2A6 /* ADManager.h */,
-				49556CB81ED44CC1006AB2A6 /* ADManager.m */,
+				495462961EE03B5600F97BE5 /* ADSplashConfig.h */,
+				495462971EE03B5600F97BE5 /* ADSplashConfig.m */,
 				49556CB91ED44CC1006AB2A6 /* ADSplashDelegate.h */,
 				49556CBA1ED44CC1006AB2A6 /* ADSplashManager.h */,
 				49556CBB1ED44CC1006AB2A6 /* ADSplashManager.m */,
-				496C9FC41ED51CA800025237 /* ADSplashView.h */,
-				496C9FC51ED51CA800025237 /* ADSplashView.m */,
-				496C9FC71ED51E0C00025237 /* ADSplashContent.h */,
-				496C9FC81ED51E0C00025237 /* ADSplashContent.m */,
 				495FA2531ED6A7A600B01F52 /* ADNativeManager.h */,
 				495FA2541ED6A7A600B01F52 /* ADNativeManager.m */,
 				495FA26E1ED6D6FE00B01F52 /* ADNativeDelegate.h */,
@@ -204,11 +218,40 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		4956436D1EE0F6800038FD75 /* IFLY */ = {
+			isa = PBXGroup;
+			children = (
+				494F56AA1EE530D6003D02CD /* ADIFLYNativeManager.h */,
+				494F56AB1EE530D6003D02CD /* ADIFLYNativeManager.m */,
+				4956436E1EE0F6940038FD75 /* ADIFLYSplashManager.h */,
+				4956436F1EE0F6940038FD75 /* ADIFLYSplashManager.m */,
+				495643711EE0F72C0038FD75 /* Framework */,
+			);
+			path = IFLY;
+			sourceTree = "<group>";
+		};
+		495643711EE0F72C0038FD75 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				495643721EE0F7360038FD75 /* AdError.h */,
+				495643731EE0F7360038FD75 /* IFLYAdBootViewController.h */,
+				495643741EE0F7360038FD75 /* IFLYAdFullScreenController.h */,
+				495643751EE0F7360038FD75 /* IFLYAdLog.h */,
+				495643761EE0F7360038FD75 /* IFLYBannerAd.h */,
+				495643771EE0F7360038FD75 /* IFLYInterstitialAd.h */,
+				495643781EE0F7360038FD75 /* IFLYNativeAd.h */,
+				495643791EE0F7360038FD75 /* libIFLYAdLib.a */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
 		495FA2591ED6B03700B01F52 /* GDT */ = {
 			isa = PBXGroup;
 			children = (
 				495FA2611ED6BEA900B01F52 /* ADGDTNativeManager.h */,
 				495FA2621ED6BEA900B01F52 /* ADGDTNativeManager.m */,
+				495462991EE03E5C00F97BE5 /* ADGDTSplashManager.h */,
+				4954629A1EE03E5C00F97BE5 /* ADGDTSplashManager.m */,
 				495FA2661ED6D4B200B01F52 /* Framework */,
 			);
 			path = GDT;
@@ -314,9 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49556CAD1ED44C3F006AB2A6 /* LaunchScreen.storyboard in Resources */,
 				49556CAA1ED44C3F006AB2A6 /* Assets.xcassets in Resources */,
-				49556CA81ED44C3F006AB2A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,42 +419,26 @@
 				49A673851ED820FE00EFCD67 /* ADNetworkLoader.m in Sources */,
 				495FA2581ED6AB6800B01F52 /* ADNativeConfig.m in Sources */,
 				495FA2521ED6A76D00B01F52 /* ADNativeContent.m in Sources */,
+				4956437D1EE1058C0038FD75 /* ADSplashView.m in Sources */,
+				495643701EE0F6940038FD75 /* ADIFLYSplashManager.m in Sources */,
 				49556CA51ED44C3F006AB2A6 /* ViewController.m in Sources */,
 				49556CBC1ED44CC1006AB2A6 /* ADDefine.m in Sources */,
+				494F56AC1EE530D6003D02CD /* ADIFLYNativeManager.m in Sources */,
+				4954629E1EE0491500F97BE5 /* ADBBSplashManager.m in Sources */,
 				495FA2551ED6A7A600B01F52 /* ADNativeManager.m in Sources */,
 				495FA2631ED6BEA900B01F52 /* ADGDTNativeManager.m in Sources */,
 				49556CA21ED44C3F006AB2A6 /* AppDelegate.m in Sources */,
+				495462981EE03B5600F97BE5 /* ADSplashConfig.m in Sources */,
 				49556C9F1ED44C3F006AB2A6 /* main.m in Sources */,
 				495266F51ED9125E00FA7B48 /* ADBBNativeManager.m in Sources */,
-				49556CBD1ED44CC1006AB2A6 /* ADManager.m in Sources */,
 				49A673881ED821E200EFCD67 /* ADConfig.m in Sources */,
+				4954629B1EE03E5C00F97BE5 /* ADGDTSplashManager.m in Sources */,
 				49A673821ED814D400EFCD67 /* ADAnalysis.m in Sources */,
-				496C9FC61ED51CA800025237 /* ADSplashView.m in Sources */,
 				49556CBE1ED44CC1006AB2A6 /* ADSplashManager.m in Sources */,
-				496C9FC91ED51E0C00025237 /* ADSplashContent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		49556CA61ED44C3F006AB2A6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				49556CA71ED44C3F006AB2A6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		49556CAB1ED44C3F006AB2A6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				49556CAC1ED44C3F006AB2A6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		49556CAF1ED44C3F006AB2A6 /* Debug */ = {
@@ -509,11 +534,15 @@
 			baseConfigurationReference = 1A60BB866992B066B65B8A2A /* Pods-BBAD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEBUG_ACTIVITY_MODE = "";
+				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_TEAM = AMSTN4PRF9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 					"ADPLATFORMGDT=1",
+					"ADPLATFORMIFLY=1",
 				);
 				INFOPLIST_FILE = BBAD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -522,6 +551,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BBAD/GDT",
 					"$(PROJECT_DIR)/BBAD/GDT/Framework",
+					"$(PROJECT_DIR)/BBAD/IFLY/Framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sinyee.babybus.BBAD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -533,11 +563,14 @@
 			baseConfigurationReference = 9157DE5B6CB870E3E839AE2B /* Pods-BBAD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_TEAM = AMSTN4PRF9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 					"ADPLATFORMGDT=1",
+					"ADPLATFORMIFLY=1",
 				);
 				INFOPLIST_FILE = BBAD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -546,6 +579,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BBAD/GDT",
 					"$(PROJECT_DIR)/BBAD/GDT/Framework",
+					"$(PROJECT_DIR)/BBAD/IFLY/Framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sinyee.babybus.BBAD;
 				PRODUCT_NAME = "$(TARGET_NAME)";

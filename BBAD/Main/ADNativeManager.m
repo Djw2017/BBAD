@@ -13,6 +13,10 @@
 #import "GDTNativeAd.h"
 #endif
 
+#ifdef ADPLATFORMGDT
+#import "ADIFLYNativeManager.h"
+#import "IFLYNativeAd.h"
+#endif
 
 #import "ADAnalysis.h"
 #import "ADNativeConfig.h"
@@ -23,7 +27,6 @@
 
 + (id)createNativeAdWithConfig:(nonnull ADNativeConfig *)nativeConfig {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initWithConfig:) name:@"mytest" object:nil];
     if (!nativeConfig) {
         return nil;
     }
@@ -37,14 +40,9 @@
     }
 }
 
-- (void)mytest {
-
-//    self = [[self class] initAllNativePlatform:4 withConfig:a];
-}
-
 + (id)useAdConfigsNative:(ADNativeConfig *)nativeConfig {
     
-    for (ADConfig *config in [ADAnalysis sharedInstance].adConfigs) {
+    for (ADNativeConfig *config in [ADAnalysis sharedInstance].adConfigs) {
         // 匹配服务端响应页面与当前页面
         if (nativeConfig.page == config.page) {
         
@@ -76,6 +74,11 @@
         case ADPlatformGDT:
             return [[ADGDTNativeManager alloc] initWithConfig:config];
 #endif
+   
+#ifdef ADPLATFORMIFLY
+        case ADPlatformIFLY:
+            return [[ADIFLYNativeManager alloc] initWithConfig:config];
+#endif
             
         default:
             return nil;
@@ -102,6 +105,10 @@
             return [self parseFromGDTNative:nativeData];
 #endif
             
+#ifdef ADPLATFORMIFLY
+        case ADPlatformIFLY:
+            return [self parseFromIFLYNative:nativeData];
+#endif
         default:{
             self.contentMAry = nil;
             return nil;
@@ -158,6 +165,35 @@
     return self.contentMAry;
 }
 #endif
+
+#ifdef ADPLATFORMIFLY
+- (NSMutableArray<ADNativeContent *>*)parseFromIFLYNative:(NSArray *)dataAry {
+    
+    if (!dataAry || [dataAry count] == 0) {
+        return nil;
+    }
+    
+    for (int i = 0; i < dataAry.count; i ++ ) {
+        GDTNativeAdData *nativeAdData = dataAry[i];
+        if (!nativeAdData.properties || ![nativeAdData.properties isKindOfClass:[NSDictionary class]]) {
+            break;
+        }else {
+            
+            ADNativeContent *content = [[ADNativeContent alloc] init];
+            content.title = [nativeAdData.properties valueForKey:@"title"];
+            content.imageUrl = [nativeAdData.properties valueForKey:@"img"];
+            content.describe = [nativeAdData.properties valueForKey:@"desc"];
+            content.nativeOriginalData = nativeAdData;
+            
+            [self.contentMAry addObject:content];
+        }
+    }
+    return self.contentMAry;
+}
+#endif
+
+
+
 
 #pragma mark - overwrite
 

@@ -9,8 +9,18 @@
 #import <Foundation/Foundation.h>
 
 #import "ADConfig.h"
+#import "ADSplashConfig.h"
 
 typedef void(^ADNetworkLoaderCompletedBlock) (NSArray<ADConfig*> *ads ,NSError *error);
+
+
+/**
+ 开屏数据回调
+
+ @param currentSplashConfig 开屏广告数据
+ @param error 错误原因
+ */
+typedef void(^ADNetworkLoaderSplashBlock) (ADSplashConfig *currentSplashConfig ,NSError *error);
 
 /**
  网络请求器
@@ -25,6 +35,13 @@ typedef void(^ADNetworkLoaderCompletedBlock) (NSArray<ADConfig*> *ads ,NSError *
  @param completedBlock 配置数据
  */
 - (void)loadAdConfigsWithVersion:(NSString *)version completed:(ADNetworkLoaderCompletedBlock)completedBlock;
+
+/**
+ 大全后台开屏数据(开屏广告)
+ 
+ @param completedBlock 开屏广告数据
+ */
++ (void)loadSplashAdConfigCompleted:(ADNetworkLoaderSplashBlock)completedBlock;
 
 - (void)cancel;
 

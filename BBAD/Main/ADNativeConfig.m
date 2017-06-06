@@ -10,4 +10,16 @@
 
 @implementation ADNativeConfig
 
+- (instancetype)initWithDic:(NSDictionary *)dic {
+    self = [super initWithDic:dic];
+    if (self) {
+        
+        self.adPosition = dic[@"position"];
+        self.adPlatformAry = dic[@"platform"];
+        self.bbadInfoAry = dic[@"bbadinfo"];
+    }
+    return self;
+
+}
+
 @end

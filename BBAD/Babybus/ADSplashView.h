@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ADSplashContent.h"
+#import "ADSplashConfig.h"
 
 @class ADSplashView;
 
@@ -46,7 +46,7 @@
 @interface ADSplashView : UIWindow
 
 /// 设置开屏广告视图代理
-@property (nonatomic, weak) id<ADSplashViewDelegate> splashViewDelegate;
+@property (nonatomic, weak) id<ADSplashViewDelegate> splashVdelegate;
 
 /// 设置背景图片，默认启动页
 @property (nonatomic, copy) NSString *splashBackgroundImageStr;
@@ -76,5 +76,11 @@
  * @param interval  广告显示时间，ver=5 添加
  */
 - (void)displayWithPortraitADImage:(NSString *)portrait landscapeADImage:(NSString *)landscape interval:(NSTimeInterval)interval;
+
+
+/**
+ 强制停止开屏广告
+ */
+- (void)stopSplash;
 
 @end

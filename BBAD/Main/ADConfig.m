@@ -14,13 +14,10 @@
     
     if (self = [super init]) {
         
-        self.page = [dic[@"page"] intValue];
-        self.displayInterval = [dic[@"displayInterval"] intValue];
         self.isValid = YES;
+        self.page = [dic[@"page"] intValue];
         self.adType = [dic[@"type"] intValue];
-        self.adPosition = dic[@"position"];
-        self.adPlatformAry = dic[@"platform"];
-        self.bbadInfoAry = dic[@"bbadinfo"];
+
     }
     return self;
 }

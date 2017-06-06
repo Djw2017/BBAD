@@ -6,9 +6,6 @@
 //  Copyright © 2017年 Babybus. All rights reserved.
 //
 
-#import <BBSDK/BBUIUtility.h>
-
-#import "ADNativeConfig.h"
 #import "ADGDTNativeManager.h"
 #import "GDTNativeAd.h"
 
