@@ -71,7 +71,7 @@ SingletonM;
     [self.adLoader cancel];
     
     @weakify(self)
-    [self.adLoader loadAdConfigsWithVersion:@"1"
+    [self.adLoader loadAdConfigsWithPage:1
                                   completed:^(NSArray<ADConfig *> *ads, NSError *error) {
                                       
                                       if (error) {
@@ -190,11 +190,11 @@ SingletonM;
 //            [self __analysisBannerAndInterstitialWithConfig:config];
 //            
 //        }
-        else if (config.adType == ADTypeNative) {
-            
-            [self __analysisBannerAndInterstitialWithConfig];
-            
-        }
+//        else if (config.adType == ADTypeNative) {
+//            
+//            [self __analysisBannerAndInterstitialWithConfig];
+//            
+//        }
         
     }
 }
@@ -224,6 +224,69 @@ SingletonM;
 //            [delegate adkUnionAdNativeDidReceiveAd:nativeAdConfigs];
 //        }
 //    }
+}
+
+
++ (ADConfig *)setThridKey:(ADConfig *)config {
+    
+    if (config.platform == ADPlatformGDT) {
+        config.third_appkey = @"1106019494";
+    }
+    if (config.platform == ADPlatformIFLY) {
+        config.third_appkey = @"570cb5c7";
+    }
+    
+    if (config.page == ADPageRecommendVC) {
+        
+        if (config.platform == ADPlatformGDT) {
+            config.third_placementId = @"9070320151085916";
+        }else if (config.platform == ADPlatformIFLY) {
+            config.third_placementId = @"0CE35C1EFF1FE0E8CA66F434A5FACB14";
+        }
+    }
+    else if (config.page == ADPageTopicDetailVC){
+        
+        if (config.platform == ADPlatformGDT) {
+            config.third_placementId = @"6060024131687918";
+        }else if (config.platform == ADPlatformIFLY) {
+            config.third_placementId = @"0CE35C1EFF1FE0E8CA66F434A5FACB14";
+        }
+    }
+    else if (config.page == ADPageAppAgeZeroVC || config.page == ADPageAppAgeTwoVC || config.page == ADPageAppAgeThreeVC
+             || config.page == ADPageAppAgeFourVC || config.page == ADPageAppAgeFiveVC){
+        
+        if (config.platform == ADPlatformGDT) {
+            config.third_placementId = @"3040123161487967";
+        }else if (config.platform == ADPlatformIFLY) {
+            config.third_placementId = @"0CE35C1EFF1FE0E8CA66F434A5FACB14";
+        }
+    }
+    else if (config.page == ADPageAppDetailDesVC){
+        
+        if (config.platform == ADPlatformGDT) {
+            config.third_placementId = @"4060925171181969";
+        }else if (config.platform == ADPlatformIFLY) {
+            config.third_placementId = @"0CE35C1EFF1FE0E8CA66F434A5FACB14";
+        }
+    }
+    else if (config.page == ADPageAppDelegate){
+        
+        if (config.platform == ADPlatformGDT) {
+            config.third_appkey = @"1105344611";
+            config.third_placementId = @"9040714184494018";
+        }else if (config.platform == ADPlatformIFLY) {
+            config.third_placementId = @"0CE35C1EFF1FE0E8CA66F434A5FACB14";
+        }
+    }
+    else if (config.page == ADPagePostDetailVC){
+        
+        if (config.platform == ADPlatformGDT) {
+            
+        }else if (config.platform == ADPlatformIFLY) {
+            config.third_placementId = @"0CE35C1EFF1FE0E8CA66F434A5FACB14";
+        }
+    }
+    return config;
 }
 
 @end

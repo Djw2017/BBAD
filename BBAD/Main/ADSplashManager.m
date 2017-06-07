@@ -9,6 +9,7 @@
 #import <BBNetwork/BBNetwork.h>
 #import <BBSDK/NSUserDefaults+BBSDK.h>
 
+#import "ADAnalysis.h"
 #import "ADBBSplashManager.h"
 #import "ADGDTSplashManager.h"
 #import "ADIFLYSplashManager.h"
@@ -22,6 +23,7 @@ NSString *const KSplashKey = @"splash_ResponseDic";
 @interface ADSplashManager ()
 {
     ADSplashManager *_manager;
+    NSError *_error;
 }
 @end
 
@@ -34,16 +36,16 @@ static ADSplashManager * _instance;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [[self alloc] init];
+//        _instance = [[self alloc] init];
+        _instance = [self loadSplashConfigCache];
+        
         // 未显示开屏广告
         _instance.splashing = NO;
-
-//        _instance.testNetwork = NO;
-        
-        /// 拉取广告超时时间
+      
+        // 拉取广告超时时间
         _instance.fetchDelay = 3;
         
-        _instance.splashBackgroundImage = [_instance splashBackgroundImage];
+        _instance.splashBackgroundImage = _instance.splashBackgroundImage;
     });
     return _instance;
 }
@@ -65,13 +67,14 @@ static ADSplashManager * _instance;
 - (UIImage *)splashBackgroundImage {
         
     CGFloat scale = [UIScreen mainScreen].scale;
-    NSString* imageName = [NSString stringWithFormat:@"%0.0fx%0.0f",SCREEN_FULL_HEIGHT*scale,SCREEN_FULL_WIDTH*scale];
+    
+    NSString* imageName = [NSString stringWithFormat:@"BBAD.bundle/%0.0fx%0.0f",SCREEN_FULL_HEIGHT*scale,SCREEN_FULL_WIDTH*scale];
     
     UIImage *ig = [UIImage imageNamed:imageName];
     //6p 9.0.2系统 imageName = "2001x1125"
     if (ig == nil) {
         if (667 == SCREEN_FULL_HEIGHT) {
-            ig = [UIImage imageNamed:@"2208x1242"];
+            ig = [UIImage imageNamed:@"BBAD.bundle/2208x1242"];
         }
     }
     return ig;
@@ -84,95 +87,118 @@ static ADSplashManager * _instance;
 /**
  开启开屏广告
  */
-- (void)startSplashWith:(NSDictionary *)splash {
+- (void)startSplash {
     
     if (self.isSplashing) {
         return;
     }
     // 正在显示开屏
     self.splashing = YES;
-    
-    if (splash) {
-        
-    }else {
 
-        [self startReqeustSplashAd];
+    [self startRequest];
+    if (self.error) {
+        [self splashShowFail:self withError:self.error];
     }
+    [self startReqeustServerSplashAd];
 }
+
+/**
+ 强制停止开屏广告,只对自家广告有效
+ */
+- (void)stopSplash {
+    if ([_instance isMemberOfClass:[ADBBSplashManager class]]) {
+        [_instance stop];
+    };
+}
+
+
+
 
 #pragma mark - inward method
 /**
  开启开屏广告时，开始请求开屏广告数据
  */
-- (void)startReqeustSplashAd {
-
-    // 读取上次缓存数据，从未缓存则不会展示开屏
-    if ([NSUserDefaults retrieveObjectForKey:KSplashKey]) {
-        NSDictionary *dic = [NSUserDefaults retrieveObjectForKey:KSplashKey];
-        if ([dic[@"allow"] isEqualToString:@"YES"]) {
-            ADSplashConfig *config = [[ADSplashConfig alloc] initWithDic:dic];
-            [self initAllSplashPlatformWithConfig:config];
-        }
-    }
+- (void)startReqeustServerSplashAd {
+    
     // 请求广告数据，下次展示
     [ADNetworkLoader loadSplashAdConfigCompleted:^(ADSplashConfig *currentSplashConfig, NSError *error) {
         if (error) {
-            if (error.code == -1) {
-                [NSUserDefaults saveObject:@{@"allow": @"NO"}
-                                    forKey:KSplashKey];
-            }
-            [self splashShowFail:self withError:error];
-        }else {
-            if (currentSplashConfig.platform == ADPlatformBabybus) {
-                [NSUserDefaults saveObject:@{@"allow": @"YES",
-                                             @"ad_channel": @"0",
-                                             @"ipad_image":currentSplashConfig.ipad_image,
-                                             @"phone_image": currentSplashConfig.phone_image,
-                                             @"delay_time": [NSString stringWithFormat:@"%d",currentSplashConfig.showInterval*1000]}
-                                    forKey:KSplashKey];
-            }else {
-                [NSUserDefaults saveObject:@{@"allow": @"YES",
-                                             @"ad_channel": [NSString stringWithFormat:@"%d",currentSplashConfig.platform],
-                                             @"delay_time": [NSString stringWithFormat:@"%d",currentSplashConfig.showInterval*1000]}
-                                    forKey:KSplashKey];
-            }
 
+            ADSplashConfig *currentSplashConfig = [[ADSplashConfig alloc] init];
+            currentSplashConfig.error = error;
+            currentSplashConfig.isValid = NO;
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentSplashConfig];
+            [NSUserDefaults saveObject:data forKey:KSplashKey];
+        }else {
+            currentSplashConfig.isValid = YES;
+            if (currentSplashConfig.platform == ADPlatformBabybus) {
+                currentSplashConfig.platform = 0;
+            }
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentSplashConfig];
+            [NSUserDefaults saveObject:data forKey:KSplashKey];
         }
     }];
 }
 
+/**
+ 读取上次缓存数据，从未缓存则不会展示开屏
+ */
++ (ADSplashManager *)loadSplashConfigCache {
+    if ([NSUserDefaults retrieveObjectForKey:KSplashKey]) {
 
+        NSData *data = [NSUserDefaults retrieveObjectForKey:KSplashKey];
+        ADSplashConfig *config = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+        if (config.isValid) {
+            return [self initAllSplashPlatformWithConfig:config];
+        }else {
+            _instance = [[self alloc] init];
+            _instance.error = config.error;
+            return _instance;
+        }
+    }else {
+        _instance = [[self alloc] init];
+        _instance.error = [NSError errorWithDomain:@"No cached data" code:KADSplashErrorNotCache userInfo:nil];
+        return _instance;
+
+    }
+}
 
 /**
  初始化广告平台
  
  @param config 平台
  */
-- (void)initAllSplashPlatformWithConfig:(ADSplashConfig *)config {
++ (ADSplashManager *)initAllSplashPlatformWithConfig:(ADSplashConfig *)config {
     
+    config.page = ADPageAppDelegate;
+    config = (ADSplashConfig *)[ADAnalysis setThridKey:config];
     ADPlatform platform = config.platform;
     if (platform == ADPlatformBabybus) {
-        _manager = [[ADBBSplashManager alloc] initWithConfig:config];
+        _instance = [[ADBBSplashManager alloc] initWithConfig:config];
     }
     
 #ifdef ADPLATFORMGDT
     else if (platform == ADPlatformGDT) {
-        _manager = [[ADGDTSplashManager alloc] initWithConfig:config];
+        _instance = [[ADGDTSplashManager alloc] initWithConfig:config];
     }
 #endif
     
 #ifdef ADPLATFORMIFLY
     else if (platform == ADPlatformIFLY) {
-        _manager = [[ADIFLYSplashManager alloc] initWithConfig:config];
+        _instance = [[ADIFLYSplashManager alloc] initWithConfig:config];
     }
 #endif
     
-    if (_manager) {
-        [_manager startRequest];
+    if (_instance) {
+
+        return _instance;
     }else {
-        NSError *error = [NSError errorWithDomain:@"Ad type of the response was incorrect" code:KADSplashErrorPlatformNotSupported
-                                         userInfo:nil];
-        [self splashShowFail:self withError:error];
+
+        _instance = [[self alloc] init];
+        _instance.error = [NSError errorWithDomain:@"Ad type of the response was incorrect" code:KADSplashErrorPlatformNotSupported
+                                          userInfo:nil];
+        return _instance;
     }
 }
 

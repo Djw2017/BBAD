@@ -47,11 +47,11 @@
      * 发起拉取广告请求,在获得广告数据后回调delegate
      */
     
-    _nativeAd = [[IFLYNativeAd alloc]initWithAppId:@"570cb5c7" adunitId:@"0CE35C1EFF1FE0E8CA66F434A5FACB14"];
+    _nativeAd = [[IFLYNativeAd alloc]initWithAppId:_currentSplashConfig.third_appkey adunitId:_currentSplashConfig.third_placementId];
     _nativeAd.delegate = self;
     _nativeAd.currentViewController = [BBUIUtility getCurrentVC];
     
-    [_nativeAd loadAd:_currentSplashConfig.count];
+    [_nativeAd loadAd:1];
 }
 
 - (void)stop {
@@ -64,21 +64,20 @@
     _attached = NO;
 }
 
-- (void)attachNativeAd:(ADNativeContent *)nativeAdData toView:(UIView *)view {
-    [super attachNativeAd:nativeAdData toView:view];
+- (void)attachNativeAd:(ADNativeContent *)nativeContent toView:(UIView *)view {
     
-    if (nativeAdData && !_attached) {
+    if (nativeContent && !_attached) {
         
-        [_nativeAd attachAd:nativeAdData.nativeOriginalData toView:view];
+        [_nativeAd attachAd:nativeContent.nativeOriginalData toView:view];
         _attached = YES;
     }
 }
 
-- (void)clickNativeAd:(ADNativeContent *)nativeAdData {
-    [super clickNativeAd:nativeAdData];
+- (void)clickNativeAd:(ADNativeContent *)nativeContent {
+    [super clickNativeAd:nativeContent];
     
-    if (nativeAdData) {
-        [_nativeAd clickAd:nativeAdData.nativeOriginalData];
+    if (nativeContent) {
+        [_nativeAd clickAd:nativeContent.nativeOriginalData];
     }
 }
 
@@ -91,7 +90,7 @@
  */
 -(void)nativeAdReceived:(NSArray *)nativeAdDataArray {
     if (nativeAdDataArray) {
-        NSMutableArray<ADNativeContent *>* contentAry = [self parseAdTypeFrom:nativeAdDataArray withADPlatform:ADPlatformGDT];
+        NSMutableArray<ADNativeContent *>* contentAry = [self parseAdTypeFrom:nativeAdDataArray withADPlatform:ADPlatformIFLY];
         
         if (contentAry) {
             if (_delegateFlags.delegateDidReceiveAdType) {
@@ -101,7 +100,7 @@
             }
         }else {
             if (_delegateFlags.delegateDidFailToReceiveWithError) {
-                NSError *error = [[NSError alloc] initWithDomain:@"广点通原生广告解析数据出错" code:-1 userInfo:nil];
+                NSError *error = [[NSError alloc] initWithDomain:@"讯飞原生广告解析数据出错" code:-1 userInfo:nil];
                 [self.delegate nativeAdWithManager:self didFailToReceiveWithError:error];
             }
         }
@@ -112,9 +111,11 @@
  *  原生广告加载广告数据失败回调
  */
 -(void)nativeAdFailToLoad:(AdError *)error {
-    if (_delegateFlags.delegateDidFailToReceiveWithError) {
-        NSError *error = [NSError errorWithDomain:error.description code:error.code userInfo:nil];
-        [self.delegate nativeAdWithManager:self didFailToReceiveWithError:error];
+    if (![error.errorDescription isEqualToString:@"广告请求成功"]) {
+        if (_delegateFlags.delegateDidFailToReceiveWithError) {
+            NSError *err = [NSError errorWithDomain:error.errorDescription code:error.errorCode userInfo:nil];
+            [self.delegate nativeAdWithManager:self didFailToReceiveWithError:err];
+        }
     }
 }
 //

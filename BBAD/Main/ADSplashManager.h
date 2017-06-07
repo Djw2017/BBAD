@@ -29,6 +29,11 @@
  */
 - (void)startRequest;
 
+/**
+ 停止开屏广告
+ */
+- (void)stop;
+
 @end
 
 
@@ -70,16 +75,18 @@
 /// 开屏图默认背景-竖屏
 @property (nonatomic, strong) UIImage *splashBackgroundImage;
 
+///
+@property (nonatomic, strong) NSError *error;
 
 SingletonH
 
 /**
  开启开屏广告
  */
-- (void)startSplashWith:(NSDictionary *)splash;
+- (void)startSplash;
 
 /**
- 强制停止开屏广告
+ 强制停止开屏广告,只对自家广告有效
  */
 - (void)stopSplash;
 

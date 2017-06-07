@@ -26,42 +26,32 @@
 /**
  请求服务端配置各页面广告具体数据
  
- @param version 当前版本号
+ @param page 当前界面
  @param completedBlock 配置数据
  */
-- (void)loadAdConfigsWithVersion:(NSString *)version completed:(ADNetworkLoaderCompletedBlock)completedBlock {
+- (void)loadAdConfigsWithPage:(ADPage)page completed:(ADNetworkLoaderNativeBlock)completedBlock {
     
-    self.requestTask = [BBNetworkManager postURLString:URL_AD_LAYOUT parameters:@{@"pos": @"2",@"al": @"346", @"ost": @"1"} success:^(id  _Nonnull responseObject) {
+    self.requestTask = [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:@{@"pos": [NSString stringWithFormat:@"%d",page],
+                                                                                     @"al": @"346",
+                                                                                     @"ost": @"1"} success:^(id  _Nonnull responseObject) {
         
-        NSDictionary *ddd = @{@"data": @[@{@"page": @"2",
-                                           @"displayInterval": @"30",
-                                           @"type": @"3",
-                                           @"position": @[@"3", @"5"],
-                                           @"platform": @[@"1",@"4"],
-                                           @"bbadinfo": @[@{@"title": @"宝宝巴士小小新品",
-                                                            @"desc": @"端午节小小新品出炉啦",
-                                                            @"img": @"http://img.bitscn.com/upimg/allimg/c160120/1453262W253120-12J05.jpg"}]
-                                          }
-                                        ]
-                             };
+//        NSDictionary *ddd = @{@"data": @[@{@"page": @"2",
+//                                           @"displayInterval": @"30",
+//                                           @"type": @"3",
+//                                           @"position": @[@"3", @"5"],
+//                                           @"platform": @[@"1",@"4"],
+//                                           @"bbadinfo": @[@{@"title": @"宝宝巴士小小新品",
+//                                                            @"desc": @"端午节小小新品出炉啦",
+//                                                            @"img": @"http://img.bitscn.com/upimg/allimg/c160120/1453262W253120-12J05.jpg"}]
+//                                          }
+//                                        ]
+//                             };
         NSArray *ary = [[NSArray alloc] init];
-        for (NSDictionary *dic in ddd[@"data"]) {
-            switch ([dic[@"type"] intValue]) {
-                case ADTypeNative:
-                {
-                    ADNativeConfig *config = [[ADNativeConfig alloc] initWithDic:dic];
-                    ary = [ary arrayByAddingObject:config];
-                }
-                    break;
-                case ADTypeSplash:
-                {
-                    
-                }
-                    break;
-                default:
-                    break;
-            }
-
+        for (NSDictionary *dic in responseObject[@"data"]) {
+            
+            ADNativeConfig *config = [[ADNativeConfig alloc] initWithDic:dic];
+            config.page = page;
+            ary = [ary arrayByAddingObject:config];
         }
         
         completedBlock(ary,nil);
@@ -78,11 +68,11 @@
  */
 + (void)loadSplashAdConfigCompleted:(ADNetworkLoaderSplashBlock)completedBlock {
     
-    NSDictionary *dic = @{@"pos": PosParameterSplash,
+    NSDictionary *dic = @{@"pos": @"10",
                           @"ost": @"1",
                           @"al": @"350"};
     
-    [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:dic withTimeoutInterval:[ADSplashManager sharedInstance].fetchDelay/2 success:^(id  _Nonnull responseObject) {
+    [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:dic withTimeoutInterval:[ADSplashManager sharedInstance].fetchDelay success:^(id  _Nonnull responseObject) {
         
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         
@@ -116,8 +106,8 @@
         
     } failure:^(NSError * _Nonnull error) {
         NSError *selfError = [NSError errorWithDomain:error.domain
-                                             code:KADSplashErrorBBNetworkError
-                                         userInfo:nil];
+                                                 code:KADSplashErrorBBNetworkError
+                                             userInfo:nil];
         
         completedBlock(nil,selfError);
     }];

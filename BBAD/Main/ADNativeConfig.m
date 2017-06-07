@@ -14,9 +14,16 @@
     self = [super initWithDic:dic];
     if (self) {
         
-        self.adPosition = dic[@"position"];
-        self.adPlatformAry = dic[@"platform"];
-        self.bbadInfoAry = dic[@"bbadinfo"];
+        // 显示位置
+        self.adPosition     = dic[@"pos"];
+        
+        // 广告平台
+        self.platform       = [dic[@"ad_channel"] intValue];
+                
+        self.child_page     = dic[@"child_page"];
+        
+        // 宝宝巴士原生广告
+        self.bbadInfoAry    = dic[@"bbadinfo"];
     }
     return self;
 

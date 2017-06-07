@@ -44,7 +44,7 @@
      * 发起拉取广告请求,在获得广告数据后回调delegate
      */
     
-    _nativeAd = [[GDTNativeAd alloc] initWithAppkey:self.nativeConfig.appkey placementId:self.nativeConfig.placementId];
+    _nativeAd = [[GDTNativeAd alloc] initWithAppkey:self.nativeConfig.third_appkey placementId:self.nativeConfig.third_placementId];
     _nativeAd.controller = [BBUIUtility getCurrentVC];
     _nativeAd.delegate = self;
     
@@ -62,21 +62,18 @@
     _attached = NO;
 }
 
-- (void)attachNativeAd:(ADNativeContent *)nativeAdData toView:(UIView *)view {
-    [super attachNativeAd:nativeAdData toView:view];
+- (void)attachNativeAd:(ADNativeContent *)nativeContent toView:(UIView *)view {
     
-    if (nativeAdData && !_attached) {
+    if (nativeContent && !_attached) {
         
-        [_nativeAd attachAd:nativeAdData.nativeOriginalData toView:view];
+        [_nativeAd attachAd:nativeContent.nativeOriginalData toView:view];
         _attached = YES;
     }
 }
 
-- (void)clickNativeAd:(ADNativeContent *)nativeAdData {
-    [super clickNativeAd:nativeAdData];
-    
-    if (nativeAdData) {
-        [_nativeAd clickAd:nativeAdData.nativeOriginalData];
+- (void)clickNativeAd:(ADNativeContent *)nativeContent {
+    if (nativeContent) {
+        [_nativeAd clickAd:nativeContent.nativeOriginalData];
     }
 }
 

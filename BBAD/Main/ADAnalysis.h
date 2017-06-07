@@ -28,4 +28,6 @@ SingletonH;
 
 - (void)startAnalysis;
 
++ (ADConfig *)setThridKey:(ADConfig *)config;
+
 @end

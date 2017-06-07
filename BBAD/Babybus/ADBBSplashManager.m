@@ -43,6 +43,13 @@
 }
 
 /**
+ 停止广告
+ */
+- (void)stop {
+    [_splashView removeForRoot];
+}
+
+/**
  请求成功后，发送消息，splashView开始展示
  */
 - (void)adImageViewIsShow {
@@ -58,6 +65,9 @@
         
         
         if ( location != NSNotFound) {
+            if (!_currentSplashConfig.showInterval) {
+                _currentSplashConfig.showInterval = 3;
+            }
             [_splashView displayWithPortraitADImage:_splashImageUrlStr landscapeADImage:nil interval:_currentSplashConfig.showInterval];
         } else{
             //        [_adImageView sd_setImageWithURL:URL_IMAGE_HTTP(_splashImageUrlStr)];

@@ -20,14 +20,12 @@
 /// 广告所在列表位置
 @property (nonatomic, strong) NSArray *adPosition;
 
+/// 广告所在页面控制器子分类：年龄段的第几个分类 或【0，1，2】代表对应位置榜单
+@property (nonatomic, copy) NSString *child_page;
+
 /// 宝宝巴士原生广告信息
 @property (nonatomic, strong) NSArray *bbadInfoAry;
 
-///	当前广告存在的页面控制器，此值优先于上值，platform
-//@property (nonatomic, assign) ADPage page;
-
-/// 需要展示的广告平台
-@property (nonatomic, strong) NSArray *adPlatformAry;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 

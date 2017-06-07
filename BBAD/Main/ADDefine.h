@@ -45,16 +45,31 @@ typedef NS_ENUM(NSInteger, ADType) {
 
 /**
  广告页面，用以区分数据，不同广告页面匹配响应中不同数据
- 所有有原生广告页面都需使用该枚举。
+ 所有广告页面都需使用该枚举。
  如有需要补充的请通知。
  */
-typedef NS_ENUM(NSInteger, ADPage) {
+typedef NS_ENUM(int, ADPage) {
     
     /// 首页排行榜
     ADPageRecommendVC				= 1,
     /// 专题列表
     ADPageTopicDetailVC				= 2,
-
+    /// 0-2岁
+    ADPageAppAgeZeroVC				= 3,
+    /// 2-3岁
+    ADPageAppAgeTwoVC				= 4,
+    /// 3-4岁
+    ADPageAppAgeThreeVC             = 5,
+    /// 4-5岁
+    ADPageAppAgeFourVC              = 6,
+    /// 5+岁
+    ADPageAppAgeFiveVC              = 7,
+    /// 应用详情
+    ADPageAppDetailDesVC            = 8,
+    /// 开屏
+    ADPageAppDelegate               = 10,
+    /// 帖子详情
+    ADPagePostDetailVC              = 12,
 };
 
 /**
@@ -82,12 +97,12 @@ typedef NS_ENUM(NSInteger, ADAction) {
 
 
 /**
- 开屏错误原因
+ 上一次请求的开屏错误原因
  */
 typedef NS_ENUM(NSInteger, ADSplashError) {
     
     /// 响应数据显示开屏条件不符合
-    KADSplashErrorConditionNotMeet                   = -1,
+    KADSplashErrorConditionNotMeet                  = -1,
     
     /// 响应数据显示平台本地不支持
     KADSplashErrorPlatformNotSupported              = -2,
@@ -96,7 +111,10 @@ typedef NS_ENUM(NSInteger, ADSplashError) {
     KADSplashErrorDataFormatError                   = -3,
     
     /// BBNetwork内部报错
-    KADSplashErrorBBNetworkError                        = -4,
+    KADSplashErrorBBNetworkError                    = -4,
+    
+    /// 未缓存开屏数据
+    KADSplashErrorNotCache                          = -5,
 };
 
 @interface ADDefine : NSObject

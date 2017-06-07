@@ -38,7 +38,7 @@
 }
 
 - (void)startRequest {
-    _native = [[IFLYNativeAd alloc]initWithAppId:@"570cb5c7" adunitId:@"0CE35C1EFF1FE0E8CA66F434A5FACB14"];
+    _native = [[IFLYNativeAd alloc]initWithAppId:_currentSplashConfig.third_appkey adunitId:_currentSplashConfig.third_placementId];
     _native.delegate = self;
     _native.currentViewController = [BBUIUtility getCurrentVC];
     [_native loadAd:1];
@@ -107,6 +107,7 @@
  @param splashAdView 当前开屏广告视图
  */
 - (void)splashAdViewDidDisplayCompleted:(ADSplashView *)splashAdView {
+    self.splashing = NO;
     if (_delegateFlags.delegateSplashDidDismissScreen) {
         [self.delegate splashDidDismissScreen:self];
     }

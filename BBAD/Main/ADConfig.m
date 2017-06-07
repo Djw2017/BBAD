@@ -15,9 +15,19 @@
     if (self = [super init]) {
         
         self.isValid = YES;
-        self.page = [dic[@"page"] intValue];
-        self.adType = [dic[@"type"] intValue];
-
+        
+        self.begin_date     = dic[@"begin_date"];
+        
+        self.end_date       = dic[@"end_date"];
+  
+        // 标题
+        self.title          = dic[@"title"];
+        
+        // 需要展示的平台
+        self.platform       = [dic[@"ad_channel"] intValue];
+        
+        // 点击类型
+        self.type           = dic[@"type"];
     }
     return self;
 }

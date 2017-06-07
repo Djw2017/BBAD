@@ -39,27 +39,26 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  广告数据渲染完毕即将展示时调用方法
  *  详解：[必选]广告数据渲染完毕，即将展示时需调用本方法。
- *      @param nativeAdData 广告渲染的数据对象
+ *      @param nativeContent 广告渲染的数据对象
  *      @param view         渲染出的广告结果页面
  */
-- (void)attachNativeAd:(nonnull ADNativeContent *)nativeAdData toView:(nonnull UIView *)view;
+- (void)attachNativeAd:(nonnull ADNativeContent *)nativeContent toView:(nonnull UIView *)view;
 
 /**
  *  广告点击调用方法
  *  详解：当用户点击广告时，开发者需调用本方法，系统会弹出内嵌浏览器、或内置AppStore、
  *      或打开系统Safari，来展现广告目标页面
- *      @param nativeAdData 用户点击的广告数据对象
+ *      @param nativeContent 用户点击的广告数据对象
  */
-- (void)clickNativeAd:(nonnull ADNativeContent *)nativeAdData;
+- (void)clickNativeAd:(nonnull ADNativeContent *)nativeContent;
 
 @end
 
 
 /**
- 原生广告基类
  分配广告平台
  */
-@interface ADNativeManager : NSObject <ADNativeProtocol> {
+@interface ADNativeManager : NSObject <ADNativeProtocol,ADNativeDelegate> {
     
     @package
     
@@ -71,22 +70,25 @@ NS_ASSUME_NONNULL_BEGIN
         unsigned int delegateNativeAdClosed								: 1;
         
     }_delegateFlags;
+    
+    ADPage _page;
 }
 
+/// 请求成功后的广告数据
+@property (nullable, nonatomic, strong) NSArray<ADNativeConfig *> *ads;
+
 /// 请求成功后经处理的广告数据
-@property (nullable, nonatomic, strong) NSMutableArray<ADNativeContent *>* contentMAry;
+@property (nullable, nonatomic, strong) NSMutableArray<ADNativeContent *> *contentMAry;
 
 //
 @property (nonatomic, weak) id<ADNativeDelegate> delegate;
 
-
 /**
  创建原生广告，需传入当前界面的广告页 @see ADPage,用以匹配服务端配置广告数据
-
- @param nativeConfig  原生广告配置
- @return <ADNativeProtocol>单个界面原生广告管理者
+ 
+ @param page  原生广告界面
  */
-+ (nullable id<ADNativeProtocol>)createNativeAdWithConfig:(ADNativeConfig *)nativeConfig;
+- (instancetype)initWithPage:(ADPage)page;
 
 /**
  平台广告返回数据解析器，用于统一不同平台返回的原生广告数据

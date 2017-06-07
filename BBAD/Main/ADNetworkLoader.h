@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ADConfig.h"
+#import "ADNativeConfig.h"
 #import "ADSplashConfig.h"
 
-typedef void(^ADNetworkLoaderCompletedBlock) (NSArray<ADConfig*> *ads ,NSError *error);
+typedef void(^ADNetworkLoaderNativeBlock) (NSArray<ADNativeConfig*> *ads ,NSError *error);
 
 
 /**
@@ -31,10 +31,10 @@ typedef void(^ADNetworkLoaderSplashBlock) (ADSplashConfig *currentSplashConfig ,
 /**
  请求服务端配置各页面广告具体数据
 
- @param version 当前版本号
+ @param page 当前界面
  @param completedBlock 配置数据
  */
-- (void)loadAdConfigsWithVersion:(NSString *)version completed:(ADNetworkLoaderCompletedBlock)completedBlock;
+- (void)loadAdConfigsWithPage:(ADPage)page completed:(ADNetworkLoaderNativeBlock)completedBlock;
 
 /**
  大全后台开屏数据(开屏广告)

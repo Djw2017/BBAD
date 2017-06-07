@@ -31,6 +31,15 @@
     return self;
 }
 
+/**
+ 停止开屏广告
+ */
+- (void)stop {
+    
+}
+
+
+
 
 #pragma mark - native ad request lifecycle
 - (void)startRequest {
@@ -62,23 +71,14 @@
     }
 }
 
-- (void)stop {
-    [super stop];
-}
-
-- (void)attachNativeAd:(ADNativeContent *)nativeAdData toView:(UIView *)view {
-    [super attachNativeAd:nativeAdData toView:view];
-    
-    if (nativeAdData && !_attached) {
-        
+- (void)attachNativeAd:(ADNativeContent *)nativeContent toView:(UIView *)view {
+    if (nativeContent && !_attached) {
         _attached = YES;
     }
 }
 
-- (void)clickNativeAd:(ADNativeContent *)nativeAdData {
-    [super clickNativeAd:nativeAdData];
-    
-    if (nativeAdData) {
+- (void)clickNativeAd:(ADNativeContent *)nativeContent {
+    if (nativeContent) {
         [self nativeAdWillPresentScreen];
     }
 }

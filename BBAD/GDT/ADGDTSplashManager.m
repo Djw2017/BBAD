@@ -13,7 +13,9 @@
 #import "GDTSplashAd.h"
 
 @interface ADGDTSplashManager () <GDTSplashAdDelegate>
-
+{
+    ADSplashConfig *_currentSplashConfig;
+}
 @property (strong, nonatomic) GDTSplashAd *splash;
 @property (strong, nonatomic) UIView *bottomView;
 @property (strong, nonatomic) UIImageView *logo;
@@ -24,19 +26,19 @@
 - (instancetype)initWithConfig:(ADSplashConfig *)splashConfig {
     self = [super initWithConfig:splashConfig];
     if (self) {
-        
+        _currentSplashConfig = splashConfig;
     }
     return self;
 }
 
 - (void)startRequest {
     //开屏广告初始化并展示代码
-    self.splash = [[GDTSplashAd alloc] initWithAppkey:@"1105344611" placementId:@"9040714184494018"];
+    self.splash = [[GDTSplashAd alloc] initWithAppkey:_currentSplashConfig.third_appkey placementId:_currentSplashConfig.third_placementId];
     self.splash.delegate = self; //设置代理 //根据iPhone设备不同设置不同背景图
     self.splash.backgroundColor = [UIColor colorWithPatternImage:[ADSplashManager sharedInstance].splashBackgroundImage];
-    self.splash.fetchDelay = [ADSplashManager sharedInstance].fetchDelay/2;
+    self.splash.fetchDelay = [ADSplashManager sharedInstance].fetchDelay;
     self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 100)];
-    _logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashBottomLogo"]];
+    _logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BBAD.bundle/SplashBottomLogo"]];
     [self.bottomView addSubview:_logo];
     _logo.center = self.bottomView.center;
     self.bottomView.backgroundColor = [UIColor whiteColor];
@@ -59,7 +61,7 @@
 
 -(void)splashAdApplicationWillEnterBackground:(GDTSplashAd *)splashAd
 {
-    NSLog(@"%s",__FUNCTION__);
+    
 }
 
 -(void)splashAdClicked:(GDTSplashAd *)splashAd
@@ -71,6 +73,7 @@
 
 -(void)splashAdClosed:(GDTSplashAd *)splashAd
 {
+    self.splashing = NO;
     if (_delegateFlags.delegateSplashDidDismissScreen) {
         [self.delegate splashDidDismissScreen:self];
     }
@@ -79,12 +82,12 @@
 
 -(void)splashAdWillPresentFullScreenModal:(GDTSplashAd *)splashAd
 {
-    NSLog(@"%s",__FUNCTION__);
+    
 }
 
 -(void)splashAdDidDismissFullScreenModal:(GDTSplashAd *)splashAd
 {
-    NSLog(@"%s",__FUNCTION__);
+
 }
 
 @end

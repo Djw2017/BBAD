@@ -10,6 +10,8 @@
 		3CCED01D4269B3F4873B425A /* libPods-BBAD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B87390678C50401CDD95AF3 /* libPods-BBAD.a */; };
 		494F56AC1EE530D6003D02CD /* ADIFLYNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 494F56AB1EE530D6003D02CD /* ADIFLYNativeManager.m */; };
 		495266F51ED9125E00FA7B48 /* ADBBNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */; };
+		4953B53E1EE7FC6B00595F9F /* BBAD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4953B53D1EE7FC6B00595F9F /* BBAD.bundle */; };
+		4953B5411EE7FFAA00595F9F /* ADAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953B5401EE7FFAA00595F9F /* ADAnalysis.m */; };
 		495462981EE03B5600F97BE5 /* ADSplashConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 495462971EE03B5600F97BE5 /* ADSplashConfig.m */; };
 		4954629B1EE03E5C00F97BE5 /* ADGDTSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4954629A1EE03E5C00F97BE5 /* ADGDTSplashManager.m */; };
 		4954629E1EE0491500F97BE5 /* ADBBSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4954629D1EE0491500F97BE5 /* ADBBSplashManager.m */; };
@@ -35,7 +37,6 @@
 		495FA2781ED6EC8300B01F52 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */; };
 		495FA27A1ED6EC8B00B01F52 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2791ED6EC8B00B01F52 /* Security.framework */; };
 		495FA27C1ED6EC9000B01F52 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA27B1ED6EC9000B01F52 /* StoreKit.framework */; };
-		49A673821ED814D400EFCD67 /* ADAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673811ED814D400EFCD67 /* ADAnalysis.m */; };
 		49A673851ED820FE00EFCD67 /* ADNetworkLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */; };
 		49A673881ED821E200EFCD67 /* ADConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673871ED821E200EFCD67 /* ADConfig.m */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,9 @@
 		494F56AB1EE530D6003D02CD /* ADIFLYNativeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADIFLYNativeManager.m; sourceTree = "<group>"; };
 		495266F31ED9125E00FA7B48 /* ADBBNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBBNativeManager.h; sourceTree = "<group>"; };
 		495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBBNativeManager.m; sourceTree = "<group>"; };
+		4953B53D1EE7FC6B00595F9F /* BBAD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BBAD.bundle; sourceTree = "<group>"; };
+		4953B53F1EE7FFAA00595F9F /* ADAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAnalysis.h; sourceTree = "<group>"; };
+		4953B5401EE7FFAA00595F9F /* ADAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAnalysis.m; sourceTree = "<group>"; };
 		495462961EE03B5600F97BE5 /* ADSplashConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashConfig.h; sourceTree = "<group>"; };
 		495462971EE03B5600F97BE5 /* ADSplashConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashConfig.m; sourceTree = "<group>"; };
 		495462991EE03E5C00F97BE5 /* ADGDTSplashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADGDTSplashManager.h; sourceTree = "<group>"; };
@@ -100,8 +104,6 @@
 		495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		495FA2791ED6EC8B00B01F52 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		495FA27B1ED6EC9000B01F52 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		49A673801ED814D400EFCD67 /* ADAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAnalysis.h; sourceTree = "<group>"; };
-		49A673811ED814D400EFCD67 /* ADAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAnalysis.m; sourceTree = "<group>"; };
 		49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNetworkLoader.h; sourceTree = "<group>"; };
 		49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNetworkLoader.m; sourceTree = "<group>"; };
 		49A673861ED821E200EFCD67 /* ADConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADConfig.h; sourceTree = "<group>"; };
@@ -194,12 +196,12 @@
 			isa = PBXGroup;
 			children = (
 				49A673891ED824DF00EFCD67 /* BBADMacro.h */,
+				4953B53F1EE7FFAA00595F9F /* ADAnalysis.h */,
+				4953B5401EE7FFAA00595F9F /* ADAnalysis.m */,
 				49556CB51ED44CC1006AB2A6 /* ADDefine.h */,
 				49556CB61ED44CC1006AB2A6 /* ADDefine.m */,
 				49A673861ED821E200EFCD67 /* ADConfig.h */,
 				49A673871ED821E200EFCD67 /* ADConfig.m */,
-				49A673801ED814D400EFCD67 /* ADAnalysis.h */,
-				49A673811ED814D400EFCD67 /* ADAnalysis.m */,
 				49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */,
 				49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */,
 				495462961EE03B5600F97BE5 /* ADSplashConfig.h */,
@@ -214,6 +216,7 @@
 				495FA2571ED6AB6800B01F52 /* ADNativeConfig.m */,
 				495FA2501ED6A76D00B01F52 /* ADNativeContent.h */,
 				495FA2511ED6A76D00B01F52 /* ADNativeContent.m */,
+				4953B53D1EE7FC6B00595F9F /* BBAD.bundle */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4953B53E1EE7FC6B00595F9F /* BBAD.bundle in Resources */,
 				49556CAA1ED44C3F006AB2A6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A673851ED820FE00EFCD67 /* ADNetworkLoader.m in Sources */,
+				4953B5411EE7FFAA00595F9F /* ADAnalysis.m in Sources */,
 				495FA2581ED6AB6800B01F52 /* ADNativeConfig.m in Sources */,
 				495FA2521ED6A76D00B01F52 /* ADNativeContent.m in Sources */,
 				4956437D1EE1058C0038FD75 /* ADSplashView.m in Sources */,
@@ -433,7 +438,6 @@
 				495266F51ED9125E00FA7B48 /* ADBBNativeManager.m in Sources */,
 				49A673881ED821E200EFCD67 /* ADConfig.m in Sources */,
 				4954629B1EE03E5C00F97BE5 /* ADGDTSplashManager.m in Sources */,
-				49A673821ED814D400EFCD67 /* ADAnalysis.m in Sources */,
 				49556CBE1ED44CC1006AB2A6 /* ADSplashManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

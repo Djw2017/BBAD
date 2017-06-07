@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ADAnalysis.h"
 
 @implementation AppDelegate
 
@@ -17,8 +16,12 @@
     [self creatRootViewController];
 //    [[ADAnalysis sharedInstance] startAnalysis];
     
-    [[ADSplashManager sharedInstance] startSplashWith:nil];
+//    ADSplashManager *splash = [[ADSplashManager alloc] init];
+//    splash.delegate = self;
+//    [splash startSplash];
+//    [ADSplashManager sharedInstance].splashBackgroundImage = [UIImage imageNamed:@""];
     [ADSplashManager sharedInstance].delegate = self;
+    [[ADSplashManager sharedInstance] startSplash];
     return YES;
 }
 
@@ -59,7 +62,9 @@
 /// 用户点击开屏广告
 - (void)splashDidUserClickedAd:(ADSplashManager *)splashAd withContent:(ADSplashConfig *)splashContent {
     NSLog(@"==================b12");
-    
+    if (splashContent.platform == ADPlatformBabybus) {
+        [splashAd stopSplash];
+    }
 //    NSString *url;
 //    if([splashContent.type intValue] == 3){//打开帖子
 //        url = splashContent.url;

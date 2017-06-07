@@ -20,68 +20,85 @@
 
 #import "ADAnalysis.h"
 #import "ADNativeConfig.h"
-
 #import "ADNativeManager.h"
+#import "ADNetworkLoader.h"
 
-@implementation ADNativeManager
-
-+ (id)createNativeAdWithConfig:(nonnull ADNativeConfig *)nativeConfig {
-    
-    if (!nativeConfig) {
-        return nil;
-    }
-    
-    if ([ADAnalysis sharedInstance].adConfigs) {
-        // 假如请求页面广告数据不为空，则使用请求数据
-        return [self useAdConfigsNative:nativeConfig];
-    }else {
-        // 使用默认数据
-        return [self useDefaultPlatformNative:nativeConfig];
-    }
+@implementation ADNativeManager {
+    ADGDTNativeManager *_gdtmanager;
+    ADIFLYNativeManager *_iflymanager;
 }
 
-+ (id)useAdConfigsNative:(ADNativeConfig *)nativeConfig {
-    
-    for (ADNativeConfig *config in [ADAnalysis sharedInstance].adConfigs) {
-        // 匹配服务端响应页面与当前页面
-        if (nativeConfig.page == config.page) {
-        
-            // 初始化响应页面的第一个平台
-            return [self initAllNativePlatform:[config.adPlatformAry[0] intValue] withConfig:nativeConfig];
-        }
+- (instancetype)initWithPage:(ADPage)page {
+    self = [super init];
+    if (self) {
+
+        _page = page;
+            
+//        if (nativeConfig.defaultPlatform) {
+//            // 假如请求页面广告数据不为空，则使用请求数据
+//            [self useAdConfigsNative:nativeConfig];
+//        }else {
+//            // 使用默认数据
+//            return [self useDefaultPlatformNative:nativeConfig];
+//        }
+
     }
-    return nil;
+    return self;
 }
 
-+ (id)useDefaultPlatformNative:(ADNativeConfig *)nativeConfig {
-    return [self initAllNativePlatform:nativeConfig.defaultPlatform withConfig:nativeConfig];
-}
+//+ (id)useAdConfigsNative:(ADNativeConfig *)nativeConfig {
+//    
+//    for (ADNativeConfig *config in [ADAnalysis sharedInstance].adConfigs) {
+//        // 匹配服务端响应页面与当前页面
+//        if (nativeConfig.page == config.page) {
+//        
+//            // 初始化响应页面的平台
+//            return [self initAllNativePlatform:config.platform withConfig:nativeConfig];
+//        }
+//    }
+//    return nil;
+//}
+//
+//+ (id)useDefaultPlatformNative:(ADNativeConfig *)nativeConfig {
+//    return [self initAllNativePlatform:nativeConfig.defaultPlatform withConfig:nativeConfig];
+//}
 
 /**
  初始化广告平台
 
- @param platform 需要使用的广告平台
- @param config 默认信息
- @return <ADNativeProtocol>单个界面原生广告管理者
+ @param config 服务端响应
  */
-+ (id)initAllNativePlatform:(int)platform withConfig:(ADNativeConfig *)config {
-    switch (platform) {
+- (void)initAllNativePlatformWithConfig:(ADNativeConfig *)config {
+    
+    ADNativeManager * manager;
+    switch (config.platform) {
             
         case ADPlatformBabybus:
-            return [[ADBBNativeManager alloc] initWithConfig:config];
+            manager = [[ADBBNativeManager alloc] initWithConfig:config];
+            break;
             
 #ifdef ADPLATFORMGDT
         case ADPlatformGDT:
-            return [[ADGDTNativeManager alloc] initWithConfig:config];
+            _gdtmanager = [[ADGDTNativeManager alloc] initWithConfig:config];
+            manager = _gdtmanager;
+            break;
 #endif
    
 #ifdef ADPLATFORMIFLY
         case ADPlatformIFLY:
-            return [[ADIFLYNativeManager alloc] initWithConfig:config];
+            _iflymanager = [[ADIFLYNativeManager alloc] initWithConfig:config];
+            manager = _iflymanager;
+            break;
 #endif
             
         default:
-            return nil;
+            break;
+
+    }
+    manager.ads = self.ads;
+    manager.delegate = self;
+    if (manager) {
+        [manager startRequest];
     }
 }
 
@@ -100,6 +117,7 @@
     switch (platform) {
         case ADPlatformBabybus:
             return [self parseFromBabybusNative:nativeData];
+            
 #ifdef ADPLATFORMGDT
         case ADPlatformGDT:
             return [self parseFromGDTNative:nativeData];
@@ -159,6 +177,14 @@
             content.describe = [nativeAdData.properties valueForKey:@"desc"];
             content.nativeOriginalData = nativeAdData;
             
+            for (ADNativeConfig *config in _ads) {
+                if (config.platform == ADPlatformGDT) {
+                    content.child_page = [config.child_page intValue];
+                    content.platform = config.platform;
+                    break;
+                }
+            }
+            
             [self.contentMAry addObject:content];
         }
     }
@@ -174,16 +200,24 @@
     }
     
     for (int i = 0; i < dataAry.count; i ++ ) {
-        GDTNativeAdData *nativeAdData = dataAry[i];
+        IFLYNativeAdData *nativeAdData = dataAry[i];
         if (!nativeAdData.properties || ![nativeAdData.properties isKindOfClass:[NSDictionary class]]) {
             break;
         }else {
             
             ADNativeContent *content = [[ADNativeContent alloc] init];
-            content.title = [nativeAdData.properties valueForKey:@"title"];
-            content.imageUrl = [nativeAdData.properties valueForKey:@"img"];
-            content.describe = [nativeAdData.properties valueForKey:@"desc"];
+            content.title = [nativeAdData.properties valueForKey:IFLYNativeAdDataKeyTitle];
+            content.imageUrl = [nativeAdData.properties valueForKey:IFLYNativeAdDataKeyImg];
+            content.describe = [nativeAdData.properties valueForKey:IFLYNativeAdDataKeySubTitle];
             content.nativeOriginalData = nativeAdData;
+            
+            for (ADNativeConfig *config in _ads) {
+                if (config.platform == ADPlatformIFLY) {
+                    content.child_page = [config.child_page intValue];
+                    content.platform = config.platform;
+                    break;
+                }
+            }
             
             [self.contentMAry addObject:content];
         }
@@ -216,12 +250,108 @@
     return self;
 }
 
-- (void)startRequest {}
+- (void)startRequest {
+    if ([self isMemberOfClass:[ADNativeManager class]]) {
+        if (_page) {
+            
+            @weakify(self)
+            ADNetworkLoader *loader = [[ADNetworkLoader alloc] init];
+            [loader loadAdConfigsWithPage:_page completed:^(NSArray<ADNativeConfig *> *ads, NSError *error) {
+                
+                if (ads) {
+                    weak_self.ads = ads;
+                    
+                    for (ADNativeConfig *config in ads) {
+                        // 初始化响应页面的平台
+                        if (config.count == 0) {
+                            config.count = 5;
+                        }
+
+                        [self initAllNativePlatformWithConfig:(ADNativeConfig *)[ADAnalysis setThridKey:config]];
+                    }
+                }else {
+                    
+                    [self nativeAdWithManager:self didFailToReceiveWithError:error];
+                
+                }
+            }];
+        }
+    }
+}
 
 - (void)stop {}
 
-- (void)attachNativeAd:(ADNativeContent *)nativeAdData toView:(UIView *)view {}
+- (void)attachNativeAd:(ADNativeContent *)nativeContent toView:(UIView *)view {
+    switch (nativeContent.platform) {
+        case ADPlatformBabybus:
+            
+            break;
+        case ADPlatformGDT:
+            [_gdtmanager attachNativeAd:nativeContent toView:view];
+            break;
+        case ADPlatformIFLY:
+            [_iflymanager attachNativeAd:nativeContent toView:view];
+            break;
+        default:
+            break;
+    }
+}
 
-- (void)clickNativeAd:(ADNativeContent *)nativeAdData {}
+- (void)clickNativeAd:(ADNativeContent *)nativeContent {
+    switch (nativeContent.platform) {
+        case ADPlatformBabybus:
+            
+            break;
+        case ADPlatformGDT:
+            [_gdtmanager clickNativeAd:nativeContent];
+            break;
+        case ADPlatformIFLY:
+            [_iflymanager clickNativeAd:nativeContent];
+            break;
+        default:
+            break;
+    }
+}
+
+
+
+
+#pragma mark - ADNativeDelegate 连接内部广告主代理
+- (void)nativeAdWithManager:(ADNativeManager *)nativeAd didReceiveContent:(NSMutableArray<ADNativeContent *>*)contentMAry {
+    if (_delegateFlags.delegateDidReceiveAdType) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_delegate nativeAdWithManager:self didReceiveContent:contentMAry];
+        });
+    }
+}
+
+- (void)nativeAdWithManager:(ADNativeManager *)nativeAd didFailToReceiveWithError:(NSError *)error {
+    if (_delegateFlags.delegateDidFailToReceiveWithError) {
+        [self.delegate nativeAdWithManager:self didFailToReceiveWithError:error];
+    }
+}
+
+- (void)nativeAdWillPresentScreenWithManager:(ADNativeManager *)nativeAd {
+    if (_delegateFlags.delegateNativeAdWillPresentScreen) {
+        [self.delegate nativeAdWillPresentScreenWithManager:nativeAd];
+    }
+}
+
+- (void)nativeAdApplicationWillEnterBackgroundWithManager:(ADNativeManager *)nativeAd {
+    if (_delegateFlags.delegateNativeAdApplicationWillEnterBackground) {
+        [self.delegate nativeAdApplicationWillEnterBackgroundWithManager:nativeAd];
+    }
+}
+
+- (void)nativeAdClosedWithManager:(ADNativeManager *)nativeAd {
+    if (_delegateFlags.delegateNativeAdClosed) {
+        [self.delegate nativeAdClosedWithManager:nativeAd];
+    }
+}
+
+//- (void)dealloc {
+//    _delegate = nil;
+//    _manager = nil;
+//}
 
 @end

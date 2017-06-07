@@ -8,39 +8,23 @@
 
 #import "ADConfig.h"
 
-@interface ADSplashConfig : ADConfig
+@interface ADSplashConfig : ADConfig <NSCoding>
 
-//
-///// 是否展示广告字样
-//@property (nonatomic, assign) BOOL isShowADStr;
-
-@property (nonatomic,copy) NSString *begin_date;
-
-@property (nonatomic,copy) NSString *end_date;
-
-/// 需要展示的平台
-@property (nonatomic,assign) ADPlatform platform;
+/// 缓存的开屏广告错误原因
+@property (nonatomic, strong) NSError *error;
 
 #pragma mark 自家广告独有
 /// 开屏广告展示时长
-@property (nonatomic,assign) int showInterval;
+@property (nonatomic, assign) int showInterval;
 
 /// iPhone图
-@property (nonatomic,copy) NSString *phone_image;
+@property (nonatomic, copy) NSString *phone_image;
 
 /// iPad图
-@property (nonatomic,copy) NSString *ipad_image;
-
-/// 点击类型: 1=下载app 2=打开web 3=打开帖子
-@property (nonatomic,copy) NSString *type;
+@property (nonatomic, copy) NSString *ipad_image;
 
 /// type为2使用此参数，打开链接
-@property (nonatomic,copy) NSString *url;
-
-@property (nonatomic,copy) NSString *title;
-
-/// 需要下载的app
-@property (nonatomic,copy) NSString *app_download;
+@property (nonatomic, copy) NSString *url;
 
 
 - (instancetype)initWithDic:(NSDictionary *)dic;

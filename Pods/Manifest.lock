@@ -40,7 +40,7 @@ DEPENDENCIES:
   - BBNetwork (from `https://github.com/Djw2017/BBNetwork.git`)
   - BBSDK (from `https://github.com/Djw2017/BBSDK.git`)
   - Masonry (~> 1.0.2)
-  - SDWebImage
+  - SDWebImage (~> 4.0.0)
 
 EXTERNAL SOURCES:
   BBNetwork:
@@ -63,6 +63,6 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 0d497d7eabf44bc91c1d1d8de0fc6fb7288edf55
+PODFILE CHECKSUM: 85647797cbec8f801305fdbf533c865025ac98b7
 
 COCOAPODS: 1.1.1

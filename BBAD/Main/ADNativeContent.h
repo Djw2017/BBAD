@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Babybus. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ADDefine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,14 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 广告图片url
 @property (nullable, nonatomic, copy) NSString *imageUrl;
 
-/// 广告尺寸 width
-@property (nonatomic, assign) NSInteger width;
+/// 广告子分类 @see ADNativeConfig
+@property (nonatomic, assign) int child_page;
 
-/// 广告尺寸 height
-@property (nonatomic, assign) NSInteger height;
-
-/// 广告 展弦比
-@property (nonatomic, assign) float aspectRatio;
+/// 广告主 @see ADPlatform
+@property (nonatomic, assign) ADPlatform platform;
 
 /// 原始数据
 @property (nonatomic, strong) id nativeOriginalData;
