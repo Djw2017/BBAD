@@ -23,7 +23,6 @@
 		49556CBE1ED44CC1006AB2A6 /* ADSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49556CBB1ED44CC1006AB2A6 /* ADSplashManager.m */; };
 		495643701EE0F6940038FD75 /* ADIFLYSplashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956436F1EE0F6940038FD75 /* ADIFLYSplashManager.m */; };
 		4956437A1EE0F7360038FD75 /* libIFLYAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 495643791EE0F7360038FD75 /* libIFLYAdLib.a */; };
-		4956437D1EE1058C0038FD75 /* ADSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4956437C1EE1058C0038FD75 /* ADSplashView.m */; };
 		495FA2521ED6A76D00B01F52 /* ADNativeContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2511ED6A76D00B01F52 /* ADNativeContent.m */; };
 		495FA2551ED6A7A600B01F52 /* ADNativeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2541ED6A7A600B01F52 /* ADNativeManager.m */; };
 		495FA2581ED6AB6800B01F52 /* ADNativeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 495FA2571ED6AB6800B01F52 /* ADNativeConfig.m */; };
@@ -37,6 +36,8 @@
 		495FA2781ED6EC8300B01F52 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */; };
 		495FA27A1ED6EC8B00B01F52 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA2791ED6EC8B00B01F52 /* Security.framework */; };
 		495FA27C1ED6EC9000B01F52 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495FA27B1ED6EC9000B01F52 /* StoreKit.framework */; };
+		49742F951EE8DD2C00F8CDDE /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49742F941EE8DD2C00F8CDDE /* ChildViewController.m */; };
+		49742F981EE8EDDD00F8CDDE /* ADSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49742F971EE8EDDD00F8CDDE /* ADSplashView.m */; };
 		49A673851ED820FE00EFCD67 /* ADNetworkLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */; };
 		49A673881ED821E200EFCD67 /* ADConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A673871ED821E200EFCD67 /* ADConfig.m */; };
 /* End PBXBuildFile section */
@@ -79,8 +80,6 @@
 		495643771EE0F7360038FD75 /* IFLYInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYInterstitialAd.h; sourceTree = "<group>"; };
 		495643781EE0F7360038FD75 /* IFLYNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYNativeAd.h; sourceTree = "<group>"; };
 		495643791EE0F7360038FD75 /* libIFLYAdLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIFLYAdLib.a; sourceTree = "<group>"; };
-		4956437B1EE1058C0038FD75 /* ADSplashView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashView.h; sourceTree = "<group>"; };
-		4956437C1EE1058C0038FD75 /* ADSplashView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashView.m; sourceTree = "<group>"; };
 		495FA2501ED6A76D00B01F52 /* ADNativeContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeContent.h; sourceTree = "<group>"; };
 		495FA2511ED6A76D00B01F52 /* ADNativeContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNativeContent.m; sourceTree = "<group>"; };
 		495FA2531ED6A7A600B01F52 /* ADNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNativeManager.h; sourceTree = "<group>"; };
@@ -104,6 +103,10 @@
 		495FA2771ED6EC8300B01F52 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		495FA2791ED6EC8B00B01F52 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		495FA27B1ED6EC9000B01F52 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		49742F931EE8DD2C00F8CDDE /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
+		49742F941EE8DD2C00F8CDDE /* ChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildViewController.m; sourceTree = "<group>"; };
+		49742F961EE8EDDD00F8CDDE /* ADSplashView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSplashView.h; sourceTree = "<group>"; };
+		49742F971EE8EDDD00F8CDDE /* ADSplashView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSplashView.m; sourceTree = "<group>"; };
 		49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNetworkLoader.h; sourceTree = "<group>"; };
 		49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNetworkLoader.m; sourceTree = "<group>"; };
 		49A673861ED821E200EFCD67 /* ADConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADConfig.h; sourceTree = "<group>"; };
@@ -142,8 +145,6 @@
 				495266F41ED9125E00FA7B48 /* ADBBNativeManager.m */,
 				4954629C1EE0491500F97BE5 /* ADBBSplashManager.h */,
 				4954629D1EE0491500F97BE5 /* ADBBSplashManager.m */,
-				4956437B1EE1058C0038FD75 /* ADSplashView.h */,
-				4956437C1EE1058C0038FD75 /* ADSplashView.m */,
 			);
 			path = Babybus;
 			sourceTree = "<group>";
@@ -173,6 +174,8 @@
 				49556CA11ED44C3F006AB2A6 /* AppDelegate.m */,
 				49556CA31ED44C3F006AB2A6 /* ViewController.h */,
 				49556CA41ED44C3F006AB2A6 /* ViewController.m */,
+				49742F931EE8DD2C00F8CDDE /* ChildViewController.h */,
+				49742F941EE8DD2C00F8CDDE /* ChildViewController.m */,
 				4956436D1EE0F6800038FD75 /* IFLY */,
 				495266F21ED9122B00FA7B48 /* Babybus */,
 				495FA2591ED6B03700B01F52 /* GDT */,
@@ -204,6 +207,8 @@
 				49A673871ED821E200EFCD67 /* ADConfig.m */,
 				49A673831ED820FE00EFCD67 /* ADNetworkLoader.h */,
 				49A673841ED820FE00EFCD67 /* ADNetworkLoader.m */,
+				49742F961EE8EDDD00F8CDDE /* ADSplashView.h */,
+				49742F971EE8EDDD00F8CDDE /* ADSplashView.m */,
 				495462961EE03B5600F97BE5 /* ADSplashConfig.h */,
 				495462971EE03B5600F97BE5 /* ADSplashConfig.m */,
 				49556CB91ED44CC1006AB2A6 /* ADSplashDelegate.h */,
@@ -424,9 +429,10 @@
 				4953B5411EE7FFAA00595F9F /* ADAnalysis.m in Sources */,
 				495FA2581ED6AB6800B01F52 /* ADNativeConfig.m in Sources */,
 				495FA2521ED6A76D00B01F52 /* ADNativeContent.m in Sources */,
-				4956437D1EE1058C0038FD75 /* ADSplashView.m in Sources */,
+				49742F981EE8EDDD00F8CDDE /* ADSplashView.m in Sources */,
 				495643701EE0F6940038FD75 /* ADIFLYSplashManager.m in Sources */,
 				49556CA51ED44C3F006AB2A6 /* ViewController.m in Sources */,
+				49742F951EE8DD2C00F8CDDE /* ChildViewController.m in Sources */,
 				49556CBC1ED44CC1006AB2A6 /* ADDefine.m in Sources */,
 				494F56AC1EE530D6003D02CD /* ADIFLYNativeManager.m in Sources */,
 				4954629E1EE0491500F97BE5 /* ADBBSplashManager.m in Sources */,

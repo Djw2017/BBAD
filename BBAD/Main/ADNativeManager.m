@@ -13,7 +13,7 @@
 #import "GDTNativeAd.h"
 #endif
 
-#ifdef ADPLATFORMGDT
+#ifdef ADPLATFORMIFLY
 #import "ADIFLYNativeManager.h"
 #import "IFLYNativeAd.h"
 #endif
@@ -25,11 +25,12 @@
 
 @implementation ADNativeManager {
 
+    ADNetworkLoader *_loader;
 #ifdef ADPLATFORMGDT
     ADGDTNativeManager *_gdtmanager;
 #endif
     
-#ifdef ADPLATFORMGDT
+#ifdef ADPLATFORMIFLY
     ADIFLYNativeManager *_iflymanager;
 #endif
 
@@ -241,6 +242,7 @@
 - (void)setDelegate:(id<ADNativeDelegate>)delegate {
     
     if (_delegate != delegate) {
+        
         _delegate = delegate;
         
         _delegateFlags.delegateDidReceiveAdType				= [_delegate respondsToSelector:@selector(nativeAdWithManager:didReceiveContent:)];
@@ -249,6 +251,9 @@
         _delegateFlags.delegateNativeAdApplicationWillEnterBackground  = [_delegate respondsToSelector:@selector(nativeAdApplicationWillEnterBackgroundWithManager:)];
         _delegateFlags.delegateNativeAdClosed  = [_delegate respondsToSelector:@selector(nativeAdClosedWithManager:)];
         
+    }
+    if (!delegate) {
+        [_loader cancel];
     }
 }
 
@@ -262,9 +267,9 @@
         if (_page) {
             
             @weakify(self)
-            ADNetworkLoader *loader = [[ADNetworkLoader alloc] init];
-            [loader loadAdConfigsWithPage:_page completed:^(NSArray<ADNativeConfig *> *ads, NSError *error) {
-                
+            _loader = [[ADNetworkLoader alloc] init];
+            [_loader loadAdConfigsWithPage:_page completed:^(NSArray<ADNativeConfig *> *ads, NSError *error) {
+
                 if (ads) {
                     weak_self.ads = ads;
                     
@@ -367,9 +372,16 @@
     }
 }
 
-//- (void)dealloc {
-//    _delegate = nil;
-//    _manager = nil;
-//}
+- (void)dealloc {
+    _loader = nil;
+    _delegate = nil;
+#ifdef ADPLATFORMGDT
+    _gdtmanager = nil;
+#endif
+    
+#ifdef ADPLATFORMIFLY
+    _iflymanager = nil;
+#endif
+}
 
 @end

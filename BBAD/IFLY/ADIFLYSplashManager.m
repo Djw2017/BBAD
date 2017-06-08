@@ -19,7 +19,7 @@
     // 业务相关
     BOOL _attached;
     
-    // 讯飞原生广告使用自家广告界面展示
+    // 讯飞开屏广告使用请求原生广告自定义界面展示
     ADSplashView *_splashView;
     
     ADSplashConfig *_currentSplashConfig;

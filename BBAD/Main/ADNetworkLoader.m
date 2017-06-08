@@ -31,9 +31,8 @@
  */
 - (void)loadAdConfigsWithPage:(ADPage)page completed:(ADNetworkLoaderNativeBlock)completedBlock {
     
-    self.requestTask = [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:@{@"pos": [NSString stringWithFormat:@"%d",page],
-                                                                                     @"al": @"346",
-                                                                                     @"ost": @"1"} success:^(id  _Nonnull responseObject) {
+    self.requestTask = [BBNetworkManager postURLString:@"http://papp-api.babybus.co/index.php/api/Daquan/home_index" parameters:@{
+                                                                                     @"ost": @"2"} success:^(id  _Nonnull responseObject) {
         
 //        NSDictionary *ddd = @{@"data": @[@{@"page": @"2",
 //                                           @"displayInterval": @"30",
@@ -57,7 +56,9 @@
         completedBlock(ary,nil);
         
     } failure:^(NSError * _Nonnull error) {
-        completedBlock(nil,error);
+        if (error.code != -999) {
+            completedBlock(nil,error);
+        }
     }];
 }
 
