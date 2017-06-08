@@ -11,7 +11,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target 'TargetName' do
-pod 'BBAD', :podspec => '/Users/babybus/Desktop/DJW/BBAD/BBAD.podspec'
+pod 'BBAD', :git => 'https://github.com/Djw2017/BBAD.git'
 end
 ```
 BBAD依赖于BBNetwork、BBSDK两个私有库，SDWebImage、Masonry两个公共库，并且BBNetwork依赖于AFNetworking，
@@ -19,8 +19,8 @@ BBAD依赖于BBNetwork、BBSDK两个私有库，SDWebImage、Masonry两个公共
 需要其他广告主时 请导入相应广告库
 
 ```ruby
-pod 'BBAD/GDT', :podspec => '/Users/babybus/Desktop/DJW/BBAD/BBAD.podspec'
-pod 'BBAD/IFLY', :podspec => '/Users/babybus/Desktop/DJW/BBAD/BBAD.podspec'
+pod 'BBAD/GDT', :git => 'https://github.com/Djw2017/BBAD.git'
+pod 'BBAD/IFLY', :git => 'https://github.com/Djw2017/BBAD.git'
 ```
 
 ## 开屏广告
