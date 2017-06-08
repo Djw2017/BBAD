@@ -291,14 +291,19 @@
 - (void)attachNativeAd:(ADNativeContent *)nativeContent toView:(UIView *)view {
     switch (nativeContent.platform) {
         case ADPlatformBabybus:
-            
             break;
+            
+#ifdef ADPLATFORMGDT
         case ADPlatformGDT:
             [_gdtmanager attachNativeAd:nativeContent toView:view];
             break;
+#endif
+
+#ifdef ADPLATFORMIFLY
         case ADPlatformIFLY:
             [_iflymanager attachNativeAd:nativeContent toView:view];
             break;
+#endif
         default:
             break;
     }
@@ -306,15 +311,21 @@
 
 - (void)clickNativeAd:(ADNativeContent *)nativeContent {
     switch (nativeContent.platform) {
-        case ADPlatformBabybus:
             
+        case ADPlatformBabybus:
             break;
+            
+#ifdef ADPLATFORMGDT
         case ADPlatformGDT:
             [_gdtmanager clickNativeAd:nativeContent];
             break;
+#endif
+
+#ifdef ADPLATFORMIFLY
         case ADPlatformIFLY:
             [_iflymanager clickNativeAd:nativeContent];
             break;
+#endif
         default:
             break;
     }
