@@ -34,7 +34,7 @@ pod 'BBAD/IFLY', :git => 'https://github.com/Djw2017/BBAD.git'
 
 	#import <BBAD/ADSplashManager.h>
 
-###开启开屏：
+### 开启开屏：
 ```
 // 请求测试数据
 [ADSplashManager sharedInstance].debugMode = YES;
@@ -42,7 +42,7 @@ pod 'BBAD/IFLY', :git => 'https://github.com/Djw2017/BBAD.git'
 [[ADSplashManager sharedInstance] startSplash];
     
 ```
-###规则：
+### 规则：
 *  没有开屏缓存数据时，是不会显示开屏的，也就是程序第一次启动时是不会有开屏的，每次开屏的数据为上一次请求到服务端的数据。
 *  stopSplash只对自家广告有效，因为广点通等广告主的开屏广告不提供提前停止API。
 *  内部会自动请求服务端开屏数据。
@@ -53,7 +53,7 @@ pod 'BBAD/IFLY', :git => 'https://github.com/Djw2017/BBAD.git'
 
     #import <BBAD/ADNativeManager.h>
 
-###开启原生广告请求
+### 开启原生广告请求
 ```
 _nativeManger = [[ADNativeManager alloc] initWithPage:ADPageTopicDetailVC];
 _nativeManger.delegate = self;
@@ -61,9 +61,9 @@ _nativeManger.delegate = self;
 
 ```
 
-###界面消失时需要取消代理
+### 界面消失时需要取消代理
     _nativeManger.delegate = nil;
-###规则:
+### 规则:
 * 除特殊情况的广告主外，每次一律默认拉取5条广告数据。
 * 代理
 
