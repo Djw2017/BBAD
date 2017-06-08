@@ -24,8 +24,15 @@
 #import "ADNetworkLoader.h"
 
 @implementation ADNativeManager {
+
+#ifdef ADPLATFORMGDT
     ADGDTNativeManager *_gdtmanager;
+#endif
+    
+#ifdef ADPLATFORMGDT
     ADIFLYNativeManager *_iflymanager;
+#endif
+
 }
 
 - (instancetype)initWithPage:(ADPage)page {

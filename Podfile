@@ -1,5 +1,7 @@
 
-# source https://github.com/Djw2017/BBSDK.git
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/Djw2017/BBNetwork.git'
+source 'https://github.com/Djw2017/BBSDK.git'
 
 platform :ios, '7.0'
 

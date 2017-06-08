@@ -40,31 +40,71 @@
                                success:(responseSuccessBlock)success
                                failure:(responseFailureBlock)failure {
     
+    return  [self getURLString:URLString parameters:parameters optionsAttributes:nil success:success failure:failure];
+}
+
+/**
+ Get请求,携带参数
+ 
+ @param URLString 请求链接
+ @param parameters 请求参数
+ @param attributesDic 携带参数 @see BBNetworkDefine
+ @param success 请求成功回调
+ @param failure 请求失败回调
+ @return dataTask
+ */
++ (NSURLSessionDataTask *)getURLString:(NSString *)URLString
+                            parameters:(nullable id)parameters
+                     optionsAttributes:(nullable NSDictionary *)attributesDic
+                               success:(responseSuccessBlock)success
+                               failure:(responseFailureBlock)failure {
+    
+    // 设置超时时间
+    NSNumber *timeoutIntervalNumber = attributesDic[BBNetworkTimeoutIntervalName];
+    NSTimeInterval timeoutInterval = timeoutIntervalNumber ? timeoutIntervalNumber.integerValue : [[self shareInstance] timeoutInterval];
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = timeoutInterval;
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    NSURLSessionDataTask * dataTask = [manager GET:URLString
-                                        parameters:parameters progress:nil
-                                           success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        if (success)
-        {
-            // 处理数据
-            [self successHandle:responseObject withSuccess:success withfailure:failure withAttributes:nil];
-        }
-        
+    NSURLSessionDataTask * dataTask = [manager GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                                               
+       if (success) {
+           // 处理数据
+           [self successHandle:responseObject withSuccess:success withfailure:failure withAttributes:attributesDic];
+       }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        if (failure)
-        {
-            failure(error);
-        }
-        
+       
+       if (failure) {
+           failure(error);
+       }
     }];
     
     return dataTask;
+}
+
+/**
+ Get请求,直接携带超时时间
+ 
+ @param URLString 请求链接
+ @param parameters 请求参数
+ @param timeoutInterval 超时时间 @see BBNetworkTimeoutIntervalName
+ @param success 请求成功回调
+ @param failure 请求失败回调
+ @return dataTask
+ */
++ (NSURLSessionDataTask *)getURLString:(NSString *)URLString
+                            parameters:(nullable id)parameters
+                   withTimeoutInterval:(NSTimeInterval)timeoutInterval
+                               success:(responseSuccessBlock)success
+                               failure:(responseFailureBlock)failure {
+    return  [self getURLString:URLString
+                     parameters:parameters
+              optionsAttributes:@{BBNetworkTimeoutIntervalName: [NSNumber numberWithInteger:timeoutInterval]}
+                        success:success
+                        failure:failure];
 }
 
 /**
@@ -376,6 +416,10 @@
         success(responseObject);
     }
     
+    else {
+        NSError *error = [NSError errorWithDomain:@"responseObject format is error" code:-2 userInfo:responseObject];
+        failure(error);
+    }
 }
 
 /**

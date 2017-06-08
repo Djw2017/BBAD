@@ -10,9 +10,16 @@
 #import <BBSDK/NSUserDefaults+BBSDK.h>
 
 #import "ADAnalysis.h"
-#import "ADBBSplashManager.h"
+
+#ifdef ADPLATFORMGDT
 #import "ADGDTSplashManager.h"
+#endif
+
+#ifdef ADPLATFORMIFLY
 #import "ADIFLYSplashManager.h"
+#endif
+
+#import "ADBBSplashManager.h"
 #import "ADNetworkLoader.h"
 
 #import "ADSplashConfig.h"
