@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BBAD"
-  s.version      = "1.0.2.1"
+  s.version      = "1.0.2.2"
   s.summary      = "BBAD"
 
   s.description  = <<-DESC
@@ -35,31 +35,34 @@ Pod::Spec.new do |s|
 
 
   s.subspec 'GDT' do |gdtt|
-    gdtt.source_files = 'BBAD/GDT/*','BBAD/GDT/Framework/*'
-    gdtt.public_header_files = 'BBAD/GDT/*.h','BBAD/GDT/Framework/*.h'
+    gdtt.source_files = 'BBAD/GDT/*','BBAD/GDT/Framework/*.h'
     gdtt.pod_target_xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => 'ADPLATFORMGDT=1'}
     gdtt.vendored_libraries = 'BBAD/GDT/Framework/libGDTMobSDK.a'
+
     gdtt.dependency 'BBAD/Main'
 
+    gdtt.libraries = 'libz'
+    gdtt.frameworks = 'AdSupport', 'CoreLocation', 'QuarzCore', 'SystemConfiguration', 'CoreTelephony', 'Security', 'StoreKit'
+
+    #gdtt.subspec 'Framework' do |fw|
+    #  fw.source_files = 'BBAD/GDT/Framework/*'
+    #  fw.public_header_files = 'BBAD/GDT/Framework/*.h'
+    
+    #end
+  end
+
+  #s.subspec 'IFLY' do |fly|
+   # fly.source_files = 'BBAD/IFLY/*','BBAD/IFLY/Framework/*.h'
+  #  fly.pod_target_xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => 'ADPLATFORMGDT=1'}
+  #  fly.vendored_libraries = 'BBAD/IFLY/Framework/libIFLYAdLib.a'
+  #  fly.dependency 'BBAD/Main'
+
     #gdtt.subspec 'Framework' do |fw|
     #  fw.source_files = 'BBAD/GDT/Framework/*'
     #  fw.public_header_files = 'BBAD/GDT/Framework/*.h'
       
     #end
-  end
-
-  s.subspec 'IFLY' do |fly|
-    fly.source_files = 'BBAD/IFLY/*','BBAD/IFLY/Framework/*.h'
-    fly.pod_target_xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => 'ADPLATFORMGDT=1'}
-    fly.vendored_libraries = 'BBAD/IFLY/Framework/libIFLYAdLib.a'
-    fly.dependency 'BBAD/Main'
-
-    #gdtt.subspec 'Framework' do |fw|
-    #  fw.source_files = 'BBAD/GDT/Framework/*'
-    #  fw.public_header_files = 'BBAD/GDT/Framework/*.h'
-      
-    #end
-  end
+  #end
 
  
   s.resource = 'BBAD/Main/BBAD.bundle'
