@@ -268,6 +268,7 @@
             
             @weakify(self)
             _loader = [[ADNetworkLoader alloc] init];
+            _loader.debugMode = self.debugMode;
             [_loader loadAdConfigsWithPage:_page completed:^(NSArray<ADNativeConfig *> *ads, NSError *error) {
 
                 if (ads) {

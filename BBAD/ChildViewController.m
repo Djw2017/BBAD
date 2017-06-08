@@ -22,11 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"111111111111");
-        [self dismissViewControllerAnimated:YES completion:nil];
-    });
-    _nativeManger = [[ADNativeManager alloc] initWithPage:ADPageAppAgeTwoVC];
+
+    _nativeManger = [[ADNativeManager alloc] initWithPage:ADPageAppAgeZeroVC];
+    _nativeManger.debugMode = YES;
     _nativeManger.delegate = self;
     [_nativeManger startRequest];
     
@@ -104,6 +102,5 @@
 
 - (void)dealloc {
     _nativeManger.delegate = nil;
-    NSLog(@"66666666666");
 }
 @end

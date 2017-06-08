@@ -31,20 +31,18 @@
  */
 - (void)loadAdConfigsWithPage:(ADPage)page completed:(ADNetworkLoaderNativeBlock)completedBlock {
     
-    self.requestTask = [BBNetworkManager postURLString:@"http://papp-api.babybus.co/index.php/api/Daquan/home_index" parameters:@{
-                                                                                     @"ost": @"2"} success:^(id  _Nonnull responseObject) {
+    NSDictionary *parameters;
+    if (self.debugMode) {
+        parameters = @{@"pos": [NSString stringWithFormat:@"%d",page],
+                       @"al": @"350",
+                       @"ost": @"2"};
+    }else {
+        parameters = @{@"pos": [NSString stringWithFormat:@"%d",page],
+                       @"al": @"346",
+                       @"ost": @"1"};
+    }
+    self.requestTask = [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:parameters success:^(id  _Nonnull responseObject) {
         
-//        NSDictionary *ddd = @{@"data": @[@{@"page": @"2",
-//                                           @"displayInterval": @"30",
-//                                           @"type": @"3",
-//                                           @"position": @[@"3", @"5"],
-//                                           @"platform": @[@"1",@"4"],
-//                                           @"bbadinfo": @[@{@"title": @"宝宝巴士小小新品",
-//                                                            @"desc": @"端午节小小新品出炉啦",
-//                                                            @"img": @"http://img.bitscn.com/upimg/allimg/c160120/1453262W253120-12J05.jpg"}]
-//                                          }
-//                                        ]
-//                             };
         NSArray *ary = [[NSArray alloc] init];
         for (NSDictionary *dic in responseObject[@"data"]) {
             
@@ -68,12 +66,19 @@
  @param completedBlock 开屏广告数据
  */
 + (void)loadSplashAdConfigCompleted:(ADNetworkLoaderSplashBlock)completedBlock {
+
+    NSDictionary *parameters;
+    if ([ADSplashManager sharedInstance].debugMode) {
+        parameters = @{@"pos": @"10",
+                       @"ost": @"1",
+                       @"al": @"350"};
+    }else {
+        parameters = @{@"pos": @"10",
+                       @"ost": @"1",
+                       @"al": @"346"};
+    }
     
-    NSDictionary *dic = @{@"pos": @"10",
-                          @"ost": @"1",
-                          @"al": @"350"};
-    
-    [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:dic withTimeoutInterval:[ADSplashManager sharedInstance].fetchDelay success:^(id  _Nonnull responseObject) {
+    [BBNetworkManager postURLString:URL_AD_RECOMMEND parameters:parameters withTimeoutInterval:[ADSplashManager sharedInstance].fetchDelay success:^(id  _Nonnull responseObject) {
         
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         

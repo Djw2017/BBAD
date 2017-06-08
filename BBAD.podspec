@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BBAD"
-  s.version      = "1.0.2.2"
+  s.version      = "1.0.3"
   s.summary      = "BBAD"
 
   s.description  = <<-DESC
@@ -41,8 +41,8 @@ Pod::Spec.new do |s|
 
     gdtt.dependency 'BBAD/Main'
 
-    gdtt.libraries = 'libz'
-    gdtt.frameworks = 'AdSupport', 'CoreLocation', 'QuarzCore', 'SystemConfiguration', 'CoreTelephony', 'Security', 'StoreKit'
+    gdtt.libraries = 'z'
+    gdtt.frameworks = 'QuartzCore', 'Security', 'StoreKit'
 
     #gdtt.subspec 'Framework' do |fw|
     #  fw.source_files = 'BBAD/GDT/Framework/*'
@@ -51,25 +51,23 @@ Pod::Spec.new do |s|
     #end
   end
 
-  #s.subspec 'IFLY' do |fly|
-   # fly.source_files = 'BBAD/IFLY/*','BBAD/IFLY/Framework/*.h'
-  #  fly.pod_target_xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => 'ADPLATFORMGDT=1'}
-  #  fly.vendored_libraries = 'BBAD/IFLY/Framework/libIFLYAdLib.a'
-  #  fly.dependency 'BBAD/Main'
+  s.subspec 'IFLY' do |fly|
+    fly.source_files = 'BBAD/IFLY/*','BBAD/IFLY/Framework/*.h'
+    fly.pod_target_xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => 'ADPLATFORMIFLY=1'}
+    fly.vendored_libraries = 'BBAD/IFLY/Framework/libIFLYAdLib.a'
 
-    #gdtt.subspec 'Framework' do |fw|
-    #  fw.source_files = 'BBAD/GDT/Framework/*'
-    #  fw.public_header_files = 'BBAD/GDT/Framework/*.h'
-      
-    #end
-  #end
+    fly.dependency 'BBAD/Main'
+
+    fly.libraries = 'z.1.2.5'
+
+  end
 
  
   s.resource = 'BBAD/Main/BBAD.bundle'
 
-  #s.frameworks = "UIKit"
-
   s.requires_arc = true
+
+  s.frameworks = 'AdSupport','CoreTelephony','SystemConfiguration','CoreLocation'
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 

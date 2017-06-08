@@ -66,8 +66,8 @@
 /// 是否正在显示开屏广告
 @property (nonatomic, assign, getter=isSplashing) BOOL splashing;
 
-/// 是否测试网络
-//@property (nonatomic, assign, getter=isTestNetwork) BOOL testNetwork;
+/// debug模式
+@property (nonatomic, assign, getter=isDebugMode) BOOL debugMode;
 
 /// 拉取广告超时时间，默认为3秒
 @property (nonatomic, assign) int fetchDelay;

@@ -80,6 +80,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 请求成功后经处理的广告数据
 @property (nullable, nonatomic, strong) NSMutableArray<ADNativeContent *> *contentMAry;
 
+/// Debug模式，请求测试数据
+@property (nonatomic, assign) BOOL debugMode;
+
 //
 @property (nonatomic, weak) id<ADNativeDelegate> delegate;
 

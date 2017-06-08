@@ -20,6 +20,7 @@
 //    splash.delegate = self;
 //    [splash startSplash];
 //    [ADSplashManager sharedInstance].splashBackgroundImage = [UIImage imageNamed:@""];
+    [ADSplashManager sharedInstance].debugMode = YES;
     [ADSplashManager sharedInstance].delegate = self;
     [[ADSplashManager sharedInstance] startSplash];
     return YES;

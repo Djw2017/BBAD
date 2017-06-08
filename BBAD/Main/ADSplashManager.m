@@ -225,6 +225,8 @@ static ADSplashManager * _instance;
 }
 
 
+
+
 #pragma mark - self Protocol
 - (instancetype)initWithConfig:(ADSplashConfig *)splashConfig {
     self = [super init];
@@ -232,5 +234,7 @@ static ADSplashManager * _instance;
 }
 
 - (void)startRequest {}
+
+- (void)stop {}
 
 @end

@@ -27,7 +27,6 @@ typedef void(^ADNetworkLoaderSplashBlock) (ADSplashConfig *currentSplashConfig ,
  */
 @interface ADNetworkLoader : NSObject
 
-
 /**
  请求服务端配置各页面广告具体数据
 
@@ -44,5 +43,8 @@ typedef void(^ADNetworkLoaderSplashBlock) (ADSplashConfig *currentSplashConfig ,
 + (void)loadSplashAdConfigCompleted:(ADNetworkLoaderSplashBlock)completedBlock;
 
 - (void)cancel;
+
+/// Debug模式，请求测试数据
+@property (nonatomic, assign) BOOL debugMode;
 
 @end
